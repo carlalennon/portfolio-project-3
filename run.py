@@ -19,8 +19,21 @@ def title_screen_selections():
         option = input(">")
         if option.lower()=="start":
             start_game()
-        elif option.lower()=="character":s
+        elif option.lower()=="character":
             character_index()
         elif option.lower()=="quit":
             sys.exit()
     
+def title_screen():
+    os.system("clear")
+    print("################")
+    print("# Closing Time #")
+    print("################")
+    print("#     PLAY     #")
+    title_screen_selections()]
+
+def character_index():
+    print("Placeholder charachter bio")
+    print("Placeholder charachter bio")
+    print("Placeholder charachter bio")
+    print("Placeholder charachter bio")
