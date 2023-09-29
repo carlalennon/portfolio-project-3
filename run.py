@@ -68,7 +68,13 @@ def get_name():
     print(question_name)
     player_name = input("> ")
     Player.name = player_name
-    print(you)
+    rules()
+
+
+def rules():
+    print("\n Weclome, " + Player.name + ".")
+    print("\n You must survive until midnight")
+    print("Make good choices...\n")
 
 
 NARRATIVE = "narrative"
