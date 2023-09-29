@@ -1,3 +1,5 @@
+import os
+
 # Player setup to hold status effects and name
 class Player:
     def __init__(self):
@@ -9,31 +11,42 @@ class Player:
 you = Player()
 
 
-# Title screen 
-def title_screen_selections():
-    option = input(">")
-    if option.lower() == "start":
-        start_game()
-    elif option.lower() == "character":
-        character_index()
-    while option.lower() not in ["start", "character", "quit"]:
-        print("please enter a valid option")
-        option = input(">")
-        if option.lower() == "start":
-            start_game()
-        elif option.lower() == "character":
-            character_index()
-        elif option.lower() == "quit":
-            sys.exit()
-
-
 def title_screen():
     os.system("clear")
     print("################")
     print("# Closing Time #")
     print("################")
     print("#     PLAY     #")
+    print("#     ABOUT    #")
     title_screen_selections()
+    
+
+# Title screen 
+def title_screen_selections():
+    option = input(">")
+    if option.lower() == "play":
+        start_game()
+    elif option.lower() == "about":
+        about_game()
+    while option.lower() not in ["play", "character", "quit"]:
+        print("please enter a valid option")
+        option = input(">")
+        if option.lower() == "play":
+            start_game()
+        elif option.lower() == "character":
+            character_index()
+
+
+def about_game():
+    os.system("clear")
+    print("Some info about the game")
+    print("Type back to exit to menu")
+    back = input("> ")
+    if back.lower() == "back":
+        title_screen()
+    else:
+        print("Type back to exit to menu")
+        back = input("> ")
 
 
 def character_index():
@@ -69,7 +82,7 @@ def prompt():
     print("*~~;.....;~~*")
     print("Enter your choice below")
     action = input(">")
-    valid_actions = ["positive action", "negative action", "characters"]
+    valid_actions = ["pla", "negative action", "characters"]
     while action.lower() not in valid_actions:
         print("Please enter a valid action. \n")
         action = input(">")
@@ -175,8 +188,29 @@ branch_fruit_machine = {
             1: "Mairead's son is nowhere to be seen as you leave the bar",
             2: "You walk into the night with Sean as a new friend"
         }
+    },
+    10: {
+        "Choice": "Hide in the bathroom",
+        "Win": False,
+        "Flavour": {
+            0: "On the way to the loo, you slip in a puddle",
+            1: "You're sticky and dirty now",
+            2: "Your pride stinging, you head to the bar"
+        },
+        "Score": -100
+    },
+    11: {
+        "Choice": "Ask Sean what's wrong",
+        "Win": False,
+        "Flavour": {
+            0: "He obviously doesn't want to talk about it",
+            1: "What's wrong with you?"
+        },
+        "Score": -100
     }
 }
+
+
 
 
 def player_choice(action):
@@ -185,3 +219,28 @@ def player_choice(action):
     """
     ask = ("What will you do?")
     ans = input(ask)
+
+
+def game_loop():
+    room()
+    time()
+    story()
+    prompt()
+
+
+# taken from video tutorial baober
+def start_game():
+    # clear terminal here
+    question_name = "What is your name?\n"
+    player_name = input("> ")
+    Player.name = player_name
+    return player_name
+
+
+### Introduction
+introduction1 = "Welcome, " ## add player name here
+intruduction2 = "the pub is open and I am describing it now" + "\n"
+
+
+# Game calls 
+title_screen()
