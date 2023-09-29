@@ -1,4 +1,4 @@
-import os
+
 
 # Player setup to hold status effects and name
 class Player:
@@ -19,9 +19,9 @@ def title_screen():
     print("#     PLAY     #")
     print("#     ABOUT    #")
     title_screen_selections()
-    
 
-# Title screen 
+
+# Title screen
 def title_screen_selections():
     option = input(">")
     if option.lower() == "play":
@@ -33,8 +33,8 @@ def title_screen_selections():
         option = input(">")
         if option.lower() == "play":
             start_game()
-        elif option.lower() == "character":
-            character_index()
+        elif option.lower() == "about":
+            about_game()
 
 
 def about_game():
@@ -58,7 +58,17 @@ def character_index():
 
 # Logic
 def start_game():
-    return
+    # clear terminal here
+    print("game is started")
+    get_name()
+
+
+def get_name():
+    question_name = "What is your name?\n"
+    print(question_name)
+    player_name = input("> ")
+    Player.name = player_name
+    print(you)
 
 
 NARRATIVE = "narrative"
@@ -229,12 +239,7 @@ def game_loop():
 
 
 # taken from video tutorial baober
-def start_game():
-    # clear terminal here
-    question_name = "What is your name?\n"
-    player_name = input("> ")
-    Player.name = player_name
-    return player_name
+
 
 
 ### Introduction
