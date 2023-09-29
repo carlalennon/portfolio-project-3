@@ -107,6 +107,7 @@ def score():
 
 
 def narrative():
+    print(narrative_dict.values())
 
 
 
@@ -135,9 +136,8 @@ def prompt():
         character_index()
 
 
-# Narrative dictionary 
-narrative = {
-    0: {
+# Narrative dictionary
+narrative_dict = {
         0: "You enter the pub",
         1: "Description",
         2: "More description",
@@ -146,7 +146,6 @@ narrative = {
         5: "[Sean]",
         6: "[Tomas]",
         7: "[Birthday party]"
-    }
 }
 # Player branch nested dictionaries
 
