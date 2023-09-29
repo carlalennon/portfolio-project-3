@@ -30,3 +30,10 @@ The deployment terminal is set to 80 columns by 24 rows. That means that each li
 ---
 
 Happy coding!
+#
+
+
+
+.lower() case insensitivity handling
+
+needs a game loop like JS projects
