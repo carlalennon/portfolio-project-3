@@ -5,7 +5,9 @@ class Player:
     def __init__(self):
         self.name = ''
         self.status = []
-        self.room = ["porch"]
+        self.room = ''
+        self.time = ''
+        self.score = 0
 
 
 you = Player()
@@ -75,9 +77,37 @@ def rules():
     print("\n Weclome, " + Player.name + ".")
     print("\n You must survive until midnight")
     print("Make good choices...\n")
+    Player.room = "porch" # sets player room
+    Player.time = "20:00"
+    Player.score = 0
+    game_loop()
 
 
-NARRATIVE = "narrative"
+def game_loop():
+    room()
+    time()
+    score()
+    narrative()
+
+
+# Player information
+def room():
+    """
+    Prints the room the player is in (Indicates branch)
+    """
+    print("\n" + Player.room.upper())
+
+
+def time():
+    print(Player.time)
+
+
+def score():
+    print("Score: " + str(Player.score))
+
+
+def narrative():
+
 
 
 player_state = {"meanie": False,
@@ -87,11 +117,6 @@ player_state = {"meanie": False,
 
 
 # Story/Narrative
-def room():
-    """
-    Prints the room the player is in (Indicates branch)
-    """
-    print("\n" + you.room.upper())
 
 
 def prompt():
@@ -110,6 +135,19 @@ def prompt():
         character_index()
 
 
+# Narrative dictionary 
+narrative = {
+    0: {
+        0: "You enter the pub",
+        1: "Description",
+        2: "More description",
+        3: "[Fruit machine]",
+        4: "[Pool table]",
+        5: "[Sean]",
+        6: "[Tomas]",
+        7: "[Birthday party]"
+    }
+}
 # Player branch nested dictionaries
 
 branch_fruit_machine = {
@@ -236,21 +274,7 @@ def player_choice(action):
     ask = ("What will you do?")
     ans = input(ask)
 
-
-def game_loop():
-    room()
-    time()
-    story()
-    prompt()
-
-
 # taken from video tutorial baober
-
-
-
-### Introduction
-introduction1 = "Welcome, " ## add player name here
-intruduction2 = "the pub is open and I am describing it now" + "\n"
 
 
 # Game calls 
