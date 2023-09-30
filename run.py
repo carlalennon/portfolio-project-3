@@ -90,6 +90,7 @@ def game_loop():
     time()
     score()
     narrative()
+    player_input_branch_definition()
 
 
 # Player information
@@ -111,16 +112,27 @@ def score():
 def narrative():
     for value in narrative_dict[Player.stage].values():
         print(value)
-        
 
 
+def player_input_branch_definition():
+    print("=====================")
+    action = input("> ")
+    valid_actions = ["fruit machine", "pool table", "sean", "tomas", "birthday party"]
+    while action.lower() not in valid_actions:
+        print("Please enter a valid action. \n")
+        action = input("> ")
+    if action.lower == "fruit machine":
+        branch_fruit_machine_init()
+    Player.stage = 1
+
+def branch_fruit_machine_init():
+    for value in branch_fruit_machine[Player.stage].values():
+        print(value)
+    
 player_state = {"meanie": False,
                 "stinky": False,
                 "cursed": False
                 }
-
-
-# Story/Narrative
 
 
 def prompt():
@@ -141,15 +153,23 @@ def prompt():
 
 # Narrative dictionary
 narrative_dict = {
-        0 : {
-        0: "You enter the pub",
-        1: "Description",
-        2: "More description",
-        3: "[Fruit machine]",
-        4: "[Pool table]",
-        5: "[Sean]",
-        6: "[Tomas]",
-        7: "[Birthday party]"
+        0: {
+             0: "You enter the pub",
+             1: "Description",
+             2: "More description",
+             3: "[Fruit machine]",
+             4: "[Pool table]",
+             5: "[Sean]",
+             6: "[Tomas]",
+             7: "[Birthday party]"
+        },
+        1: {
+            0: "In the corner, a fruit machine plays a tune",
+            1: "Mairead is using the fruit machine",
+            2: "She catches your eye",
+            3: "'Hey, ",
+            4: "This is the big one, I can feel it",
+            5: "Can you [Give] me a fiver or [Not]?'"
         }
 }
 # Player branch nested dictionaries
@@ -278,7 +298,7 @@ def player_choice(action):
     ask = ("What will you do?")
     ans = input(ask)
 
-# taken from video tutorial baober
+
 
 
 # Game calls 
