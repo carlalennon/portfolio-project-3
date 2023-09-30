@@ -6,9 +6,9 @@ class Player:
         self.name = ''
         self.status = []
         self.room = ''
-        self.time = ''
         self.score = 0
         self.stage = 0
+        self.branch = ''
 
 
 you = Player()
@@ -41,7 +41,6 @@ def title_screen_selections():
 
 
 def about_game():
-    os.system("clear")
     print("Some info about the game")
     print("Type back to exit to menu")
     back = input("> ")
@@ -52,17 +51,12 @@ def about_game():
         back = input("> ")
 
 
-def character_index():
-    print("Placeholder charachter bio")
-    print("Placeholder charachter bio")
-    print("Placeholder charachter bio")
-    print("Placeholder charachter bio")
-
-
 # Logic
 def start_game():
-    # clear terminal here
-    print("game is started")
+    Player.room = "porch"  # sets player room
+    Player.score = 0
+    Player.stage = 0
+    Player.branch = 0
     get_name()
 
 
@@ -78,10 +72,6 @@ def rules():
     print("\n Weclome, " + Player.name + ".")
     print("\n You must survive until midnight")
     print("Make good choices...\n")
-    Player.room = "porch"  # sets player room
-    Player.time = "20:00"
-    Player.score = 0
-    Player.stage = 0
     game_loop()
 
 
@@ -123,19 +113,22 @@ def score():
 
 
 def narrative():
+    print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     for value in narrative_dict[Player.stage].values():
         print(value)
+    print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
 
 
 def player_input_branch_definition():
-    print("=====================")
+    print("================================")
     action = input("> ")
     valid_actions = ["gamble", "pool table", "sean", "tomas", "birthday party"]
     while action.lower() not in valid_actions:
         print("Please enter a valid action. \n")
         action = input("> ")
-    if action.lower == "gamble":
+    if action.lower() == "gamble":
         branch_fruit_machine_init()
+        Player.branch = 1
     else:
         print("Please enter a valid option")
         action = input("> .. ")
@@ -144,14 +137,12 @@ def player_input_branch_definition():
 
 
 def branch_fruit_machine_init():
-    print("Fruit machine branch initiated")
+    print("Fruit machine branch initiated")                                                
+    choice = input("> ")
+    if choice.lower() == branch_fruit_machine["1"]["Choice"]:
+        print("give selected")
     # for value in branch_fruit_machine[Player.stage].values():
         # print(value)
-    
-player_state = {"meanie": False,
-                "stinky": False,
-                "cursed": False
-                }
 
 
 # Narrative dictionary
@@ -178,18 +169,19 @@ narrative_dict = {
 # Player branch nested dictionaries
 
 branch_fruit_machine = {
-    1: {
-        "Choice": "Give the money",
+    "1": {
+        "Choice": "give",
         "Win": True,
         "Flavour": {
             0: "You hand Mairead a fiver",
             1: "The machine beeps and pays out",
             2: "Mairead is delighted, and buys you a drink"
         },
-        "Score": 250
+        "Score": 250,
+        "player_stage": 1
     },
     2: {
-        "Choice": "Do not",
+        "Choice": "not",
         "Win": False,
         "Flavour": {
             0: "Mairead scowls at you",
@@ -197,7 +189,8 @@ branch_fruit_machine = {
             2: "You feel a sense of dread creep over you"
         },
         "Score": -250,
-        "Modifier": "Cursed for 2 turns, score will not change"
+        "Modifier": "Cursed for 2 turns, score will not change",
+        "player_stage": 1
     },
     3: {
         "Choice": "Kiss her",
@@ -292,17 +285,5 @@ branch_fruit_machine = {
 }
 
 
-
-
-def player_choice(action):
-    """
-    Abtracts player input
-    """
-    ask = ("What will you do?")
-    ans = input(ask)
-
-
-
-
-# Game calls 
+# Game calls
 title_screen()
