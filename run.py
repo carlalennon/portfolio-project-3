@@ -102,7 +102,20 @@ def room():
 
 
 def time():
-    print(Player.time)
+    if Player.stage == 0:
+        print("20:00")
+    elif Player.stage == 1:
+        print("21:00")
+    elif Player.stage == 2:
+        print("22:00")
+    elif Player.stage == 3:
+        print("23:00")
+    elif Player.stage == 4:
+        print("00:00")
+    elif Player.stage == 5:
+        print("01:00")
+    else:
+        print("timeError")
 
 
 def score():
@@ -117,38 +130,28 @@ def narrative():
 def player_input_branch_definition():
     print("=====================")
     action = input("> ")
-    valid_actions = ["fruit machine", "pool table", "sean", "tomas", "birthday party"]
+    valid_actions = ["gamble", "pool table", "sean", "tomas", "birthday party"]
     while action.lower() not in valid_actions:
         print("Please enter a valid action. \n")
         action = input("> ")
-    if action.lower == "fruit machine":
+    if action.lower == "gamble":
         branch_fruit_machine_init()
+    else:
+        print("Please enter a valid option")
+        action = input("> .. ")
     Player.stage = 1
+    game_loop()
+
 
 def branch_fruit_machine_init():
-    for value in branch_fruit_machine[Player.stage].values():
-        print(value)
+    print("Fruit machine branch initiated")
+    # for value in branch_fruit_machine[Player.stage].values():
+        # print(value)
     
 player_state = {"meanie": False,
                 "stinky": False,
                 "cursed": False
                 }
-
-
-def prompt():
-    print("*~~;.....;~~*")
-    print("Enter your choice below")
-    action = input(">")
-    valid_actions = ["pla", "negative action", "characters"]
-    while action.lower() not in valid_actions:
-        print("Please enter a valid action. \n")
-        action = input(">")
-    if action.lower() in ["positive action"]:
-        advance_positive(action.lower())
-    elif action.lower() in ["negative action"]:
-        advance_negative(action.lower())
-    elif action.lower() in ["characters"]:
-        character_index()
 
 
 # Narrative dictionary
@@ -157,7 +160,7 @@ narrative_dict = {
              0: "You enter the pub",
              1: "Description",
              2: "More description",
-             3: "[Fruit machine]",
+             3: "[gamble]",
              4: "[Pool table]",
              5: "[Sean]",
              6: "[Tomas]",
