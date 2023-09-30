@@ -15,7 +15,6 @@ you = Player()
 
 
 def title_screen():
-    os.system("clear")
     print("################")
     print("# Closing Time #")
     print("################")
@@ -69,10 +68,13 @@ def get_name():
 
 
 def rules():
+    print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     print("\n Weclome, " + Player.name + ".")
     print("\n You must survive until midnight")
     print("Make good choices...\n")
+    print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     game_loop()
+    player_input_branch_definition()
 
 
 def game_loop():
@@ -80,7 +82,7 @@ def game_loop():
     time()
     score()
     narrative()
-    player_input_branch_definition()
+    player_answer()
 
 
 # Player information
@@ -119,6 +121,21 @@ def narrative():
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
 
 
+def flavour_print():
+    print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
+    for value in branch_fruit_machine[1]["Flavour"].values():
+        print(value)
+    print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
+    game_loop()
+
+
+def player_answer():
+    print("\n Enter your choice below:")
+    choice = input("> ")
+    if choice.lower() == "give":
+        flavour_print()
+
+
 def player_input_branch_definition():
     print("================================")
     action = input("> ")
@@ -137,12 +154,8 @@ def player_input_branch_definition():
 
 
 def branch_fruit_machine_init():
+    Player.room = "fruit machine"
     print("Fruit machine branch initiated")                                                
-    choice = input("> ")
-    if choice.lower() == branch_fruit_machine["1"]["Choice"]:
-        print("give selected")
-    # for value in branch_fruit_machine[Player.stage].values():
-        # print(value)
 
 
 # Narrative dictionary
@@ -151,11 +164,11 @@ narrative_dict = {
              0: "You enter the pub",
              1: "Description",
              2: "More description",
-             3: "[gamble]",
-             4: "[Pool table]",
-             5: "[Sean]",
-             6: "[Tomas]",
-             7: "[Birthday party]"
+             3: "You could go to the fruit machine to [Gamble]",
+             4: "or try your luck at the [Pool table].",
+             5: "The owner [Sean] is watching a game in the corner.",
+             6: "[Tomas] is waving at you from the bar, over the ",
+             7: "sound of a group of women at a [Birthday party]."
         },
         1: {
             0: "In the corner, a fruit machine plays a tune",
@@ -169,7 +182,7 @@ narrative_dict = {
 # Player branch nested dictionaries
 
 branch_fruit_machine = {
-    "1": {
+    1: {
         "Choice": "give",
         "Win": True,
         "Flavour": {
