@@ -8,6 +8,7 @@ class Player:
         self.room = ''
         self.time = ''
         self.score = 0
+        self.stage = 0
 
 
 you = Player()
@@ -77,9 +78,10 @@ def rules():
     print("\n Weclome, " + Player.name + ".")
     print("\n You must survive until midnight")
     print("Make good choices...\n")
-    Player.room = "porch" # sets player room
+    Player.room = "porch"  # sets player room
     Player.time = "20:00"
     Player.score = 0
+    Player.stage = 0
     game_loop()
 
 
@@ -107,8 +109,9 @@ def score():
 
 
 def narrative():
-    print(narrative_dict.values())
-
+    for value in narrative_dict[Player.stage].values():
+        print(value)
+        
 
 
 player_state = {"meanie": False,
@@ -138,6 +141,7 @@ def prompt():
 
 # Narrative dictionary
 narrative_dict = {
+        0 : {
         0: "You enter the pub",
         1: "Description",
         2: "More description",
@@ -146,6 +150,7 @@ narrative_dict = {
         5: "[Sean]",
         6: "[Tomas]",
         7: "[Birthday party]"
+        }
 }
 # Player branch nested dictionaries
 
