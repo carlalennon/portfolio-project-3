@@ -82,11 +82,18 @@ def rules():
 
 def game_loop():
     print("game_loop")
+    debug_player_stage()
     room()
     time()
     score()
     narrative()
     player_answer()
+    
+
+
+def debug_player_stage():
+    print("debug_stage")
+    print("Stage: " + str(Player.stage))
 
 
 # Player information
@@ -141,7 +148,8 @@ def player_answer():
     choice = input("> ")
     if choice.lower() == "give":
         flavour_print()
-    Player.stage += 1
+    Player.stage = Player.stage + 1
+    flavour_print()
 
 
 def player_input_branch_definition():
@@ -186,6 +194,11 @@ narrative_dict = {
             3: "'Hey, ",
             4: "This is the big one, I can feel it",
             5: "Can you [Give] me a fiver or [Not]?'"
+        },
+        2: {
+            0: "You head to the bar and make small talk.",
+            1: "Mairead feels a spark, and leans in to ",
+            2: "kiss you. Do you [Kiss Her] or [Not]? "
         }
 }
 # Player branch nested dictionaries
@@ -215,7 +228,7 @@ branch_fruit_machine = {
         "player_stage": 1
     },
     3: {
-        "Choice": "Kiss her",
+        "Choice": "kiss her",
         "Win": False,
         "Flavour": {
             0: "You lean in to accept the kiss",
@@ -226,7 +239,7 @@ branch_fruit_machine = {
         "Score": -100
     },
     4: {
-        "Choice": "Don't kiss her",
+        "Choice": "not",
         "Win": True,
         "Flavour": {
             0: "You freeze awkwardly",
