@@ -177,7 +177,10 @@ def player_input_branch_definition():
 def branch_fruit_machine_init():
     print("branch_fruit_machine_init")
     Player.room = "fruit machine"
-    print("Fruit machine branch initiated")                                                
+    Player.branch = 1
+    Player.stage = 1
+    print("Fruit machine branch initiated")
+    game_loop()                                                
 
 
 # Narrative dictionary
