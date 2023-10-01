@@ -157,6 +157,10 @@ def player_answer():
 
 def player_input_branch_definition():
     print("player_input_branch_definition")
+    print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
+    for value in narrative_dict[Player.stage].values():
+        print(value)
+    print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     print("================================")
     action = input("> ")
     valid_actions = ["gamble", "pool table", "sean", "tomas", "birthday party"]
@@ -169,7 +173,6 @@ def player_input_branch_definition():
     else:
         print("Please enter a valid option 2")
         action = input("> .. ")
-    game_loop()
 
 
 def branch_fruit_machine_init():
