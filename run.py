@@ -159,11 +159,13 @@ def player_answer():
     print("player_answer")
     print("\n Enter your choice below:")
     choice = input("> ")
-    while choice.lower() not in [debug_dict[Player.stage]["Win"]["Choice"], debug_dict[Player.stage]["Lose"]["Choice"]]:
+    win = debug_dict[Player.stage]["Win"]["Choice"]
+    lose = debug_dict[Player.stage]["Lose"]["Choice"]
+    if choice.lower() not in [win, lose]:
         print("Please enter a valid choice 4")
-    if choice.lower() == debug_dict[Player.stage]["Win"]["Choice"]:
+    if choice.lower() == win:
         flavour_print_win()
-    elif choice.lower() == debug_dict[Player.stage]["Lose"]["Choice"]:
+    elif choice.lower() == lose:
         flavour_print_lose()
 
 

@@ -45,3 +45,5 @@ https://www.w3schools.com/python/python_dictionaries_nested.asp
 https://www.codingninjas.com/studio/library/how-to-clear-a-screen-in-python
 https://blog.enterprisedna.co/python-iterate-dictionary/#:~:text=To%20access%20both%20dictionary%20keys,for%20each%20key%2Dvalue%20pair.&text=This%20script%20will%20print%20both,values%20of%20a%20Python%20dictionary.
 https://realpython.com/iterate-through-dictionary-python/
+
+Line too long, reassign to variables
