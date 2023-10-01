@@ -47,3 +47,7 @@ https://blog.enterprisedna.co/python-iterate-dictionary/#:~:text=To%20access%20b
 https://realpython.com/iterate-through-dictionary-python/
 
 Line too long, reassign to variables
+
+Using this compiler because I can't get GH to run
+
+https://www.programiz.com/python-programming/online-compiler/

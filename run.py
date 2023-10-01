@@ -135,6 +135,20 @@ def narrative():
         print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
 
 
+def player_answer():
+    print("player_answer")
+    print("\n Enter your choice below:")
+    choice = input("> ")
+    win = debug_dict[Player.stage]["Win"]["Choice"]
+    lose = debug_dict[Player.stage]["Lose"]["Choice"]
+    if choice.lower() not in [win, lose]:
+        print("Please enter a valid choice 4")
+    if choice.lower() == win:
+        flavour_print_win()
+    elif choice.lower() == lose:
+        flavour_print_lose()
+
+
 def flavour_print_win():
     print("flavour_print_win")
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
@@ -153,21 +167,6 @@ def flavour_print_lose():
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     Player.stage = Player.stage + 1
     game_loop()
-
-
-def player_answer():
-    print("player_answer")
-    print("\n Enter your choice below:")
-    choice = input("> ")
-    win = debug_dict[Player.stage]["Win"]["Choice"]
-    lose = debug_dict[Player.stage]["Lose"]["Choice"]
-    if choice.lower() not in [win, lose]:
-        print("Please enter a valid choice 4")
-    if choice.lower() == win:
-        flavour_print_win()
-    elif choice.lower() == lose:
-        flavour_print_lose()
-
 
 
 def player_input_branch_definition():
@@ -208,7 +207,8 @@ debug_dict = {
                 1: "The machine beeps and pays out",
                 2: "Mairead is delighted, and buys you a drink"
             },
-            "Score": 250
+            "Score": 250,
+            "Branch Modifier": 10
         },
         "Lose": {
             "Choice": "not",
@@ -218,9 +218,71 @@ debug_dict = {
                 2: "You feel a sense of dread creep over you"
             },
             "Score": -250,
-            "Modifier": "Cursed for 2 turns, score will not change",
+            "Branch Modifier": 20
         }
-    }
+    },
+    2: {
+        "Win": {
+            "Choice": "not",
+            "Flavour": {
+                 0: "You freeze awkwardly",
+                 1: "Luckily, someone sits down at the fruit machine",
+                 2: "Mairead hurries over to preserve her winning streak"
+            },
+            "Score": 100,
+            "Branch Modifier": 30
+        },
+        "Lose": {
+             "Choice": "kiss her",
+             "Flavour": {
+                0: "You lean in to accept the kiss",
+                1: "A dark shadow covers you",
+                2: "Mairead's son pulls you from behind and threatens you",
+                3: "How embarassing"
+             },
+             "Score": -100,
+             "Branch Modifier": 40
+        }
+    },
+    3: {
+        "Win": {
+                "Choice": "Challenge him",
+                "Win": True,
+                "Flavour": {
+                    0: "Mairead's son is drunk",
+                    1: "The game is an easy win for you",
+                    2: "You shake hands and part ways as equals"
+                },
+                "Score": 250
+                },
+        "Lose": {
+                "Choice": "Don't challenge him",
+                "Win": False,
+                "Flavour": {
+                    0: "He calls you a wimp",
+                    1: "He assures you he will meet you outside later",
+                    2: "You'd better not leave early tonight..."
+                },
+                "Score": -250,
+                "Modifier": "Enemy: You will be beaten if leaving before closing time"
+                }
+        },
+    4: {
+        "Win": {
+
+        },
+        "Lose": {
+
+        }
+    },
+    5: {
+        "Win": {
+
+        },
+        "Lose": {
+
+        }
+    },
 }
 
 
@@ -248,67 +310,29 @@ narrative_dict = {
             0: "You head to the bar and make small talk.",
             1: "Mairead feels a spark, and leans in to ",
             2: "kiss you. Do you [Kiss Her] or [Not]? "
+        },
+        3: {
+            0: "[Challenge] him to pool",
+            1: "Do [Not]"
+        },
+        4: {
+            0: "You have won"
         }
 }
 # Player branch nested dictionaries
-
-branch_fruit_machine = {
-    1: {
-        "Choice": "give",
-        "Win": True,
-        "Flavour": {
-            0: "You hand Mairead a fiver",
-            1: "The machine beeps and pays out",
-            2: "Mairead is delighted, and buys you a drink"
-        },
-        "Score": 250,
-        "player_stage": 1
-    },
-    2: {
-        "Choice": "not",
-        "Win": False,
-        "Flavour": {
-            0: "Mairead scowls at you",
-            1: "She scowls darkly and spits a curse at you",
-            2: "You feel a sense of dread creep over you"
-        },
-        "Score": -250,
-        "Modifier": "Cursed for 2 turns, score will not change",
-        "player_stage": 1
-    },
-    3: {
-        "Choice": "kiss her",
-        "Win": False,
-        "Flavour": {
-            0: "You lean in to accept the kiss",
-            1: "A dark shadow covers you",
-            2: "Mairead's son pulls you from behind and threatens you",
-            3: "How embarassing"
-        },
-        "Score": -100
-    },
-    4: {
-        "Choice": "not",
-        "Win": True,
-        "Flavour": {
-            0: "You freeze awkwardly",
-            1: "Luckily, someone sits down at the fruit machine",
-            2: "Mairead hurries over to preserve her winning streak"
-        },
-        "Score": 100
-    },
+old = {
     5: {
-        "Choice": "Challenge him",
+        '''"Choice": "Challenge him",
         "Win": True,
         "Flavour": {
             0: "Mairead's son is drunk",
             1: "The game is an easy win for you",
             2: "You shake hands and part ways as equals"
         },
-        "Score": 250
+        "Score": 250'''
     },
     6: {
-        "Choice": "Don't challenge him",
+        '''"Choice": "Don't challenge him",
         "Win": False,
         "Flavour": {
             0: "He calls you a wimp",
@@ -316,7 +340,7 @@ branch_fruit_machine = {
             2: "You'd better not leave early tonight..."
         },
         "Score": -250,
-        "Modifier": "Enemy: You will be beaten if leaving before closing time"
+        "Modifier": "Enemy: You will be beaten if leaving before closing time"'''
     },
     7: {
         "Choice": "Beat Sean at pool",
