@@ -135,10 +135,20 @@ def narrative():
         print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
 
 
-def flavour_print():
-    print("flavour_print")
+def flavour_print_win():
+    print("flavour_print_win")
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
-    for value in branch_fruit_machine[Player.stage]["Flavour"].values():
+    for value in debug_dict[Player.stage]["Win"]["Flavour"].values():
+        print(value)
+    print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
+    Player.stage = Player.stage + 1
+    game_loop()
+
+
+def flavour_print_lose():
+    print("flavour_print_lose")
+    print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
+    for value in debug_dict[Player.stage]["Lose"]["Flavour"].values():
         print(value)
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     Player.stage = Player.stage + 1
@@ -149,9 +159,13 @@ def player_answer():
     print("player_answer")
     print("\n Enter your choice below:")
     choice = input("> ")
-    if choice.lower() == "give":
-        flavour_print()
-    flavour_print()
+    while choice.lower() not in [debug_dict[Player.stage]["Win"]["Choice"], debug_dict[Player.stage]["Lose"]["Choice"]]:
+        print("Please enter a valid choice 4")
+    if choice.lower() == debug_dict[Player.stage]["Win"]["Choice"]:
+        flavour_print_win()
+    elif choice.lower() == debug_dict[Player.stage]["Lose"]["Choice"]:
+        flavour_print_lose()
+
 
 
 def player_input_branch_definition():
@@ -181,6 +195,31 @@ def branch_fruit_machine_init():
     Player.stage = 1
     print("Fruit machine branch initiated")
     game_loop()                                                
+
+
+debug_dict = {
+    1: {
+        "Win": {
+            "Choice": "give",
+            "Flavour": {
+                0: "You hand Mairead a fiver",
+                1: "The machine beeps and pays out",
+                2: "Mairead is delighted, and buys you a drink"
+            },
+            "Score": 250
+        },
+        "Lose": {
+            "Choice": "not",
+            "Flavour": {
+                0: "Mairead scowls at you",
+                1: "She scowls darkly and spits a curse at you",
+                2: "You feel a sense of dread creep over you"
+            },
+            "Score": -250,
+            "Modifier": "Cursed for 2 turns, score will not change",
+        }
+    }
+}
 
 
 # Narrative dictionary
