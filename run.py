@@ -138,7 +138,7 @@ def narrative():
 def flavour_print():
     print("flavour_print")
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
-    for value in branch_fruit_machine[1]["Flavour"].values():
+    for value in branch_fruit_machine[Player.stage]["Flavour"].values():
         print(value)
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     Player.stage = Player.stage + 1
