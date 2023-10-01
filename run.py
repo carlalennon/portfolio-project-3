@@ -31,7 +31,7 @@ def title_screen_selections():
         start_game()
     elif option.lower() == "about":
         about_game()
-    while option.lower() not in ["play", "character", "quit"]:
+    while option.lower() not in ["play", "about", "quit"]:
         print("please enter a valid option")
         option = input(">")
         if option.lower() == "play":
@@ -127,10 +127,13 @@ def score():
 
 def narrative():
     print("narrative")
-    print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
-    for value in narrative_dict[Player.stage].values():
-        print(value)
-    print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
+    if Player.stage == 0:
+        player_input_branch_definition()
+    else:
+        print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
+        for value in narrative_dict[Player.stage].values():
+            print(value)
+        print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
 
 
 def flavour_print():
@@ -139,6 +142,7 @@ def flavour_print():
     for value in branch_fruit_machine[1]["Flavour"].values():
         print(value)
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
+    Player.stage = Player.stage + 1
     game_loop()
 
 
@@ -148,7 +152,6 @@ def player_answer():
     choice = input("> ")
     if choice.lower() == "give":
         flavour_print()
-    Player.stage = Player.stage + 1
     flavour_print()
 
 
@@ -158,13 +161,13 @@ def player_input_branch_definition():
     action = input("> ")
     valid_actions = ["gamble", "pool table", "sean", "tomas", "birthday party"]
     while action.lower() not in valid_actions:
-        print("Please enter a valid action. \n")
+        print("Please enter a valid action. 1\n")
         action = input("> ")
     if action.lower() == "gamble":
         branch_fruit_machine_init()
         Player.branch = 1
     else:
-        print("Please enter a valid option")
+        print("Please enter a valid option 2")
         action = input("> .. ")
     game_loop()
 
