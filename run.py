@@ -76,7 +76,6 @@ def rules():
     print("\n You must survive until midnight")
     print("Make good choices...\n")
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
-    game_loop()
     player_input_branch_definition()
 
 
