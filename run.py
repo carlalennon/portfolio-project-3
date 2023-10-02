@@ -205,9 +205,10 @@ debug_dict = {
         "Win": {
             "Choice": "give",
             "Flavour": {
-                0: "You hand Mairead a fiver",
-                1: "The machine beeps and pays out",
-                2: "Mairead is delighted, and buys you a drink"
+                0: "You hand Mairead a fiver and she put it in",
+                1: "the fruit machine. The machine beeps and pays out",
+                2: "a handful of change. \n",
+                3: "Mairead is delighted, and buys you a drink!"
             },
             "Score": 250,
             "narrative": 2
@@ -227,23 +228,23 @@ debug_dict = {
         "Win": {
             "Choice": "not",
             "Flavour": {
-                 0: "You freeze awkwardly",
-                 1: "Luckily, someone sits down at the fruit machine",
-                 2: "Mairead hurries over to preserve her winning streak"
+                 0: "You freeze awkwardly, unsure what to do.",
+                 1: "Luckily, someone sits down at the fruit machine and",
+                 2: "Mairead hurries over to preserve her winning streak."
             },
             "Score": 100,
-            "Branch Modifier": 30
+            "narrative": 4
         },
         "Lose": {
              "Choice": "kiss her",
              "Flavour": {
                 0: "You lean in to accept the kiss",
-                1: "A dark shadow covers you",
+                1: "A dark shadow covers you, and a hand grabs your shoulder.",
                 2: "Mairead's son pulls you from behind and threatens you",
-                3: "How embarassing"
+                3: "How embarassing..."
              },
              "Score": -100,
-             "Branch Modifier": 40
+             "narrative": 7
         }
     },
     3: {
@@ -271,29 +272,75 @@ debug_dict = {
         },
     4: {
         "Win": {
-
+            "Choice": "pool",
+            "Win": True,
+            "Flavour": {
+                0: "Sean jumps at the distraction. He loves pool!",
+                1: "'I'm the best, just don't win or I might throw",
+                2: "you out of this pub! Ha ha.' "  
+            },
+            "Score": 100,
+            "narrative": 5
         },
         "Lose": {
-
+            "Choice": "ask",
+            "Win": False,
+            "Flavour": {
+                0: "He doesn't want to talk about it, what's",
+                1: "wrong with you? \n",
+                2: "Maybe a game of pool will cheer him up."  
+            },
+            "Score": -100,
+            "narrative": 5
         }
     },
     5: {
         "Win": {
-
+            "Choice": "win",
+            "Win": True,
+            "Flavour": {
+                0: "Sean turns to you beaming. 'Good game player name!'",
+                1: "He sources you a drink on the house."
+            },
+            "Score": 300,
+            "narrative": 6
         },
         "Lose": {
+            "Choice": "beat",
+            "Win": False,
+            "Flavour": {
+                0: "Sean is annoyed by your insolence. He shows",
+                1: "you the door."
+            },
+            "Score": -100,
+            "narrative": 8
 
         }
     },
+    6: {
+        0: "This is an empty entry as a game over condition"
+    },
+    7: {
+        "Win": {
+            "Choice": "challenge",
+            "Win": True,
+            "Flavour": {
+                0: "Mairead's son is very drunk. It's an easy win.",
+                1: "You shake hands and part ways, as equals."
+            },
+            "Score": 250,
+            "narrative": 5
+        }
+    }
 }
 
 
 # Narrative dictionary
 narrative_dict = {
         0: {
-             0: "You enter the pub",
-             1: "Description",
-             2: "More description",
+             0: "You head down to your local on a Friday night,",
+             1: "there's a loud buzz of conversation and music playing.",
+             2: "The air smells like wood and alchohol. ",
              3: "You could go to the fruit machine to [Gamble]",
              4: "or try your luck at the [Pool table].",
              5: "The owner [Sean] is watching a game in the corner.",
@@ -304,7 +351,7 @@ narrative_dict = {
             0: "In the corner, a fruit machine plays a tune",
             1: "Mairead is using the fruit machine",
             2: "She catches your eye",
-            3: "'Hey, ",
+            3: "'Hey, player name",
             4: "This is the big one, I can feel it",
             5: "Can you [Give] me a fiver or [Not]?'"
         },
@@ -320,7 +367,31 @@ narrative_dict = {
             3: "[Hide], or tough it out and [Stay] in your seat."
         },
         4: {
-            0: "You have won"
+            0: "You spot Sean in the corner. His team must have",
+            1: "lost, he's crying quietly into a jersey. Do you",
+            2: "[Ask] him what's wrong, or distract him with a",
+            3: "game of [Pool?]"
+        },
+        5: {
+            0: "Sean steps up for a challenge. He's not a very good",
+            1: "player on the best of days, but he seems to be",
+            2: "having a lot of fun.",
+            3: "Do you [Beat] him, or let him [Win]?"
+        },
+        6: {
+            0: "It's finally closing time. You survived the night.",
+            1: "You and Sean are the last to leave. You stroll into",
+            2: "the night as new friends."
+        },
+        7: {
+            0:"Your pride stinging, you look around for a",
+            1: "peaceful resolution. Your eyes fall on the pool",
+            2: "table. Will you [Challenge] him to a game or",
+            3: "[Ignore] him?"
+        },
+        8: {
+            0: "You have been thrown out of the pub.",
+            1: "Game over. Try again?"
         }
 }
 # Player branch nested dictionaries
