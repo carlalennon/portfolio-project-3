@@ -155,7 +155,8 @@ def flavour_print_win():
     for value in debug_dict[Player.stage]["Win"]["Flavour"].values():
         print(value)
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
-    Player.stage = Player.stage + 1
+    narrative = debug_dict[Player.stage]["Win"]["narrative"]
+    Player.stage = narrative
     game_loop()
 
 
@@ -165,7 +166,8 @@ def flavour_print_lose():
     for value in debug_dict[Player.stage]["Lose"]["Flavour"].values():
         print(value)
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
-    Player.stage = Player.stage + 1
+    narrative = debug_dict[Player.stage]["Lose"]["narrative"]
+    Player.stage = narrative
     game_loop()
 
 
@@ -208,7 +210,7 @@ debug_dict = {
                 2: "Mairead is delighted, and buys you a drink"
             },
             "Score": 250,
-            "Branch Modifier": 10
+            "narrative": 2
         },
         "Lose": {
             "Choice": "not",
@@ -218,7 +220,7 @@ debug_dict = {
                 2: "You feel a sense of dread creep over you"
             },
             "Score": -250,
-            "Branch Modifier": 20
+            "narrative": 3
         }
     },
     2: {
@@ -312,8 +314,10 @@ narrative_dict = {
             2: "kiss you. Do you [Kiss Her] or [Not]? "
         },
         3: {
-            0: "[Challenge] him to pool",
-            1: "Do [Not]"
+            0: "With a bad feeling, you lay low in a corner.",
+            1: "Mairead's curse ringing in your ears, you",
+            2: "Wonder if you should head to the bathroom to",
+            3: "[Hide], or tough it out and [Stay] in your seat."
         },
         4: {
             0: "You have won"
