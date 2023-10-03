@@ -4,7 +4,7 @@
 class Player:
     def __init__(self):
         self.name = ''
-        self.status = []
+        self.time = ''
         self.room = ''
         self.score = 0
         self.stage = 0
@@ -66,6 +66,7 @@ def get_name():
     print(question_name)
     player_name = input("> ")
     Player.name = player_name
+    Player.time = 0
     rules()
 
 
@@ -83,6 +84,7 @@ def game_loop():
     print("game_loop")
     debug_player_stage()
     room()
+    time_increment()
     time()
     score()
     narrative()
@@ -102,21 +104,30 @@ def room():
     print("\n" + player_room.upper())
 
 
+def time_increment():
+    print("time increment")
+    Player.time = Player.time + 1
+
+
 def time():
-    if Player.stage == 0:
+    if Player.time == 0:
         print("20:00")
-    elif Player.stage == 1:
+    elif Player.time == 1:
         print("21:00")
-    elif Player.stage == 2:
+    elif Player.time == 2:
         print("22:00")
-    elif Player.stage == 3:
+    elif Player.time == 3:
         print("23:00")
-    elif Player.stage == 4:
+    elif Player.time == 4:
         print("00:00")
-    elif Player.stage == 5:
+    elif Player.time == 5:
         print("01:00")
+    elif Player.time == 6:
+        print("02:00")
+    elif Player.time == 7:
+        print("03:00")
     else:
-        print("timeError")
+        print("TimeError")
 
 
 def score():
