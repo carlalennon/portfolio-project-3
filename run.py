@@ -91,7 +91,7 @@ def game_loop():
 
 
 def debug_player_stage():
-    print("debug_stage")
+
     print("Stage: " + str(Player.stage))
 
 
@@ -184,7 +184,7 @@ def player_input_branch_definition():
         print("Please enter a valid action. 1\n")
         action = input("> ")
     if action.lower() == "gamble":
-        branch_fruit_machine_init()
+        define_branch()
     elif action.lower() == "pool table":
         Player.stage == 20
     else:
@@ -192,11 +192,9 @@ def player_input_branch_definition():
         action = input("> .. ")
 
 
-def branch_fruit_machine_init():
-    print("branch_fruit_machine_init")
+def define_branch():
     Player.room = "fruit machine"
     Player.stage = 1
-    print("Fruit machine branch initiated")
     game_loop()                                                
 
 
@@ -473,8 +471,6 @@ debug_dict = {
     17: "Game over condition",
     18: "Game over condition",
     19: "Game over condition",
-
-        
 }
 
 
