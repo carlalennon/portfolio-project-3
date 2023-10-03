@@ -99,7 +99,7 @@ def room():
     Prints the room the player is in (Indicates branch)
     """
     player_room = choice_dict[Player.stage]["room"]
-    print("\n" + Player.room.upper())
+    print("\n" + player_room.upper())
 
 
 def time():
@@ -154,7 +154,7 @@ def flavour_print_win():
     for value in choice_dict[Player.stage]["Win"]["Flavour"].values():
         print(value)
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
-    narrative = choice_dict_dict[Player.stage]["Win"]["narrative"]
+    narrative = choice_dict[Player.stage]["Win"]["narrative"]
     Player.stage = narrative
     game_loop()
 
@@ -243,7 +243,8 @@ choice_dict = {
              },
              "Score": -100,
              "narrative": 7
-        }
+        },
+        "room": "bar"
     },
     3: {
         "Win": {
@@ -268,6 +269,7 @@ choice_dict = {
                 "Score": -250,
                 "narrative": 9
             },
+        "room": "bar"
     },
     4: {
         "Win": {
@@ -291,7 +293,8 @@ choice_dict = {
             },
             "Score": -100,
             "narrative": 5
-        }
+        },
+        "room": "bar"
     },
     5: {
         "Win": {
@@ -313,11 +316,12 @@ choice_dict = {
             },
             "Score": -100,
             "narrative": 8
-
-        }
+        },
+        "room": "pool table"
     },
     6: {
-        0: "This is an empty entry as a game over condition"
+        0: "This is an empty entry as a game over condition",
+        "room": "outside"
     },
     7: {
         "Win": {
@@ -329,10 +333,23 @@ choice_dict = {
             },
             "Score": 250,
             "narrative": 5
-        }
+        },
+        "Lose": {
+            "Choice": "ignore",
+            "Win": False,
+            "Flavour": {
+                0: "Mairead's son calls you a wimp. He assures",
+                1: "you he'll see you outside later.",
+                2: "You'd better not leave early tonight."
+            },
+            "Score": -250,
+            "narrative": 5
+        },
+        "room": "pool table"
     },
     8: {
-        0: "Game over condition"
+        0: "Game over condition",
+        "room": "outside"
     },
     9: {
         "Win": {
@@ -354,7 +371,8 @@ choice_dict = {
             },
             "Score": 0,
             "narrative": 13
-        }
+        },
+        "room": "bar"
     },
     10: {
         "Win": {
@@ -380,7 +398,8 @@ choice_dict = {
             },
             "Score": -300,
             "narrative": 14
-        }
+        },
+        "room": "birthday"
     },
     11: {
         "Win": {
@@ -401,7 +420,8 @@ choice_dict = {
             },
             "Score": -200,
             "narrative": 19
-        }
+        },
+        "room": "birthday"
     },
     12: "Game over condition",
     13: {
@@ -428,7 +448,8 @@ choice_dict = {
             },
             "Score": -100,
             "narrative": 18
-        }
+        },
+        "room": "bar"
     },
     14: "Game over condition",
     15: {
@@ -442,7 +463,8 @@ choice_dict = {
             },
             "Score": 250,
             "narrative": 16
-        }
+        },
+        "room": "bar"
     },
     16: {
         "Win": {
@@ -466,7 +488,8 @@ choice_dict = {
             },
             "Score": -100,
             "narrative": 18
-        }
+        },
+        "room": "bar"
     },
     17: "Game over condition",
     18: "Game over condition",
