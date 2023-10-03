@@ -51,3 +51,4 @@ Line too long, reassign to variables
 Using this compiler because I can't get GH to run
 
 https://www.programiz.com/python-programming/online-compiler/
+https://www.pygame.org/news

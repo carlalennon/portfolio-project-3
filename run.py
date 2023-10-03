@@ -6,7 +6,7 @@ class Player:
         self.name = ''
         self.time = ''
         self.room = ''
-        self.score = 0
+        self.score = ''
         self.stage = 0
         self.branch = ''
 
@@ -82,7 +82,6 @@ def rules():
 
 def set_player_ui():
     Player.time = 0
-    Player.score = 0
     Player.room = "  "
 
 
@@ -92,6 +91,7 @@ def game_loop():
     room()
     time_increment()
     time()
+    score_add()
     score()
     narrative()
     player_answer()
@@ -133,6 +133,12 @@ def time():
         print("03:00")
     else:
         print("TimeError")
+
+
+def score_add():
+    print("score_add")
+    if Player.stage in choice_dict:
+        Player.score += choice_dict[Player.stage]["Win"]["Score"]
 
 
 def score():
