@@ -322,7 +322,7 @@ choice_dict = {
             "Choice": "win",
             "Win": True,
             "Flavour": {
-                0: "Sean turns to you beaming. 'Good game player name!'",
+                0: "Sean turns to you beaming. 'Good game!'",
                 1: "He sources you a drink on the house."
             },
             "Score": 300,
@@ -515,6 +515,105 @@ choice_dict = {
     17: "Game over condition",
     18: "Game over condition",
     19: "Game over condition",
+    20: {
+        "Win": {
+            "Choice": "challenge",
+            "Win": True,
+            "Flavour": {
+                0: "They are impressed by your confident",
+                1: "tone. The biggest boy agrees to play",
+                2: "you."
+            },
+            "Score": 200,
+            "narrative": 21
+        },
+        "Lose": {
+            "Choice": "euro",
+            "Win": False,
+            "Flavour": {
+                0: "They do not respect pool table ettiquitte.",
+                1: "They throw the euro at your head.",
+                2: "You retreat and look around for something",
+                3: "else to do."
+            },
+            "Score": -100,
+            "narrative": 22
+        },
+        "room": "pool table"
+    },
+    21: {
+        "Win": {
+            "Choice": "lose",
+            "Win": True,
+            "Flavour": {
+                0: "You decide to let this one slide and",
+                1: "tank the game. The boy is delighted!",
+                2: "It's winner stays on, so you're off the",
+                3: "pool table for now."
+            },
+            "Score": 100,
+            "narrative": 4
+        },
+        "Lose": {
+            "Choice": "win",
+            "Win": False,
+            "Flavour": {
+                0: "You easily beat the boy while all his",
+                1: "friends watch. One of the girls starts to",
+                2: "cry. You've ruined her fake 18th birthday."
+            },
+            "Score": -200,
+            "narrative": 22
+        },
+        "room": "pool table"
+    },
+    22: {
+        "Win": {
+            "Choice": "sean",
+            "Win": True,
+            "Flavour": {
+                0: "You approach Sean and tell him the",
+                1: "table is yours. He assures you that",
+                2: "won't be the case for long."
+                
+            },
+            "Score": 0,
+            "narrative": 5
+        },
+        "Lose": {
+            "Choice": "birthday",
+            "Win": True,
+            "Flavour": {
+                0: "You decide to leave the table",
+                1: "on a high, and wander over to the",
+                2: "lively birthday party."
+            },
+            "Score": 0,
+            "narrative": 23
+        },
+        "room": "pool table"
+    },
+    23: {
+        "Win": {
+            "Choice":,
+            "Win":,
+            "Flavour": {
+                
+            },
+            "Score": ,
+            "narrative":
+        },
+        "Lose": {
+            "Choice":,
+            "Win":,
+            "Flavour": {
+                
+            },
+            "Score": ,
+            "narrative":
+        },
+        "room":
+    },      
 }
 
 
@@ -646,6 +745,30 @@ narrative_dict = {
             0: "Alone, smelling like floor water, and all the gin",
             1: "gone, it's time to head home in shame.",
             2: "Maybe you'll have a better time another night.",
+        },
+        20: {
+            0: "You decide to start with a game of pool.",
+            1: "The table has been taken over by a gang of youths.",
+            2: "They look far too young to be in here...",
+            3: "Will you clear the table by [Challenge]ing them",
+            4: "or just quietly place a [Euro] on the table?"
+        },
+        21: {
+            0: "This boy is not a very good player. You could",
+            1: "beat him easily. Should you embarrass him and",
+            2: "[Win] the game? Or should you [Lose]?"
+        },
+        22: {
+            0: "High off the scent of victory, you look around to",
+            1: "see who to talk to next. You could challenge [Sean]",
+            2: "to a game of pool, or you could join the women at",
+            3: "the [Birthday] table."
+        },
+        23: {
+            0: "You greet the women around the table and ask if",
+            1: "you can join them. They look at each other and ask",
+            2: "'We heard crying, did you make someone cry earlier?'",
+            3: "Do you [Confess] or do you [Lie]?"
         }
         
 }
