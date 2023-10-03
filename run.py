@@ -66,7 +66,7 @@ def get_name():
     print(question_name)
     player_name = input("> ")
     Player.name = player_name
-    Player.time = 0
+    set_player_ui()
     rules()
 
 
@@ -78,6 +78,12 @@ def rules():
     print("Make good choices...\n")
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     player_input_branch_definition()
+
+
+def set_player_ui():
+    Player.time = 0
+    Player.score = 0
+    Player.room = "  "
 
 
 def game_loop():
@@ -105,7 +111,6 @@ def room():
 
 
 def time_increment():
-    print("time increment")
     Player.time = Player.time + 1
 
 
