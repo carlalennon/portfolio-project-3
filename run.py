@@ -14,7 +14,6 @@ class Player:
 you = Player()
 
 
-
 def title_screen():
     print("################")
     print("# Closing Time #")
