@@ -57,7 +57,6 @@ def start_game():
     Player.room = "porch"  # sets player room
     Player.score = 0
     Player.stage = 0
-    Player.branch = 0
     get_name()
 
 
@@ -186,7 +185,6 @@ def player_input_branch_definition():
         action = input("> ")
     if action.lower() == "gamble":
         branch_fruit_machine_init()
-        Player.branch = 1
     elif action.lower() == "pool table":
         Player.stage == 20
     else:
@@ -197,7 +195,6 @@ def player_input_branch_definition():
 def branch_fruit_machine_init():
     print("branch_fruit_machine_init")
     Player.room = "fruit machine"
-    Player.branch = 1
     Player.stage = 1
     print("Fruit machine branch initiated")
     game_loop()                                                
