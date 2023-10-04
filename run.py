@@ -25,15 +25,14 @@ def title_screen():
 
 # Title screen
 def title_screen_selections():
-    print("title_screen_selections")
-    option = input(">")
+    option = input("> \n")
     if option.lower() == "play":
         start_game()
     elif option.lower() == "about":
         about_game()
     while option.lower() not in ["play", "about", "quit"]:
         print("please enter a valid option")
-        option = input(">")
+        option = input("> \n")
         if option.lower() == "play":
             start_game()
         elif option.lower() == "about":
@@ -41,14 +40,22 @@ def title_screen_selections():
 
 
 def about_game():
-    print("Some info about the game")
+    print("Made in 2023")
+    print("Characters:")
+    print("Sean : The owner of the pub and")
+    print("      a big softie.")
+    print("Tomas : A strange man with a lot")
+    print("       to say.")
+    print("Mairead : A woman who loves nothing")
+    print("         more than to gamble, except")
+    print("         maybe her violent son.")
     print("Type back to exit to menu")
-    back = input("> ")
+    back = input("> \n")
     if back.lower() == "back":
         title_screen()
     else:
         print("Type back to exit to menu")
-        back = input("> ")
+        back = input("> \n")
 
 
 # Logic
@@ -60,20 +67,21 @@ def start_game():
 
 
 def get_name():
-    print("get_name")
     question_name = "What is your name?\n"
     print(question_name)
-    player_name = input("> ")
+    player_name = input("> \n")
     Player.name = player_name
     set_player_ui()
     rules()
 
 
 def rules():
-    print("rules")
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     print("\n Weclome, " + Player.name + ".")
-    print("\n You must survive until midnight")
+    print("Try not to get thrown out of the pub")
+    print("or be forced to leave before midnight.")
+    print("Choose you path by typing the text")
+    print("within the [Brackets].")
     print("Make good choices...\n")
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     player_input_branch_definition()
@@ -85,7 +93,6 @@ def set_player_ui():
 
 
 def game_loop():
-    print("game_loop")
     room()
     time_increment()
     time()
@@ -101,7 +108,9 @@ def room():
     Prints the room the player is in (Indicates branch)
     """
     player_room = choice_dict[Player.stage]["room"]
+    print("--Current room: ------------")
     print("\n" + player_room.upper())
+    print("----------------------------")
 
 
 def time_increment():
@@ -157,7 +166,7 @@ def game_over_check():
 def player_answer():
     if choice_dict[Player.stage] != "GAME OVER":
         print("\n Enter your choice below:")
-        choice = input("> ")
+        choice = input("> \n")
         win = choice_dict[Player.stage]["Win"]["Choice"]
         lose = choice_dict[Player.stage]["Lose"]["Choice"]
         if choice.lower() not in [win, lose]:
@@ -166,8 +175,6 @@ def player_answer():
             flavour_print_win()
         elif choice.lower() == lose:
             flavour_print_lose()
-    else:
-        game_over_print()
 
 
 def flavour_print_win():
@@ -195,12 +202,11 @@ def player_input_branch_definition():
     for value in narrative_dict[Player.stage].values():
         print(value)
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
-    print("================================")
-    action = input("> ")
+    action = input("> \n")
     valid_actions = ["gamble", "pool table", "sean", "tomas", "birthday party"]
     while action.lower() not in valid_actions:
-        print("Please enter a valid action. 1\n")
-        action = input("> ")
+        print("Please enter a valid action. \n")
+        action = input("> \n")
     if action.lower() == "gamble":
         define_branch_fruit()
     elif action.lower() == "pool table":
@@ -208,8 +214,8 @@ def player_input_branch_definition():
     elif action.lower() == "sean":
         define_branch_sean()
     else:
-        print("Please enter a valid option 2")
-        action = input("> .. ")
+        print("Please enter a valid option")
+        action = input("> \n")
 
 
 def define_branch_fruit():
