@@ -86,7 +86,6 @@ def set_player_ui():
 
 def game_loop():
     print("game_loop")
-    debug_player_stage()
     room()
     time_increment()
     time()
@@ -94,10 +93,6 @@ def game_loop():
     score()
     narrative()
     player_answer()
-
-
-def debug_player_stage():
-    print("Stage: " + str(Player.stage))
 
 
 # Player information
@@ -135,7 +130,6 @@ def time():
 
 
 def score_add():
-    print("score_add")
     if Player.stage in choice_dict:
         Player.score += choice_dict[Player.stage]["Win"]["Score"]
 
@@ -145,7 +139,6 @@ def score():
 
 
 def narrative():
-    print("narrative")
     if Player.stage == 0:
         player_input_branch_definition()
     else:
@@ -156,7 +149,6 @@ def narrative():
 
 
 def player_answer():
-    print("player_answer")
     print("\n Enter your choice below:")
     choice = input("> ")
     win = choice_dict[Player.stage]["Win"]["Choice"]
@@ -170,7 +162,6 @@ def player_answer():
 
 
 def flavour_print_win():
-    print("flavour_print_win")
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     for value in choice_dict[Player.stage]["Win"]["Flavour"].values():
         print(value)
@@ -181,7 +172,6 @@ def flavour_print_win():
 
 
 def flavour_print_lose():
-    print("flavour_print_lose")
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     for value in choice_dict[Player.stage]["Lose"]["Flavour"].values():
         print(value)
@@ -207,6 +197,8 @@ def player_input_branch_definition():
         define_branch()
     elif action.lower() == "pool table":
         Player.stage == 20
+    elif action.lower() == "sean":
+        Player.stage == 30
     else:
         print("Please enter a valid option 2")
         action = input("> .. ")
@@ -341,7 +333,7 @@ choice_dict = {
         "room": "pool table"
     },
     6: {
-        0: "This is an empty entry as a game over condition",
+        0: "GAME OVER",
         "room": "outside"
     },
     7: {
@@ -369,7 +361,7 @@ choice_dict = {
         "room": "pool table"
     },
     8: {
-        0: "Game over condition",
+        0: "GAME OVER",
         "room": "outside"
     },
     9: {
@@ -444,7 +436,7 @@ choice_dict = {
         },
         "room": "birthday"
     },
-    12: "Game over condition",
+    12: "GAME OVER",
     13: {
         "Win": {
             "Choice": "sympathise",
@@ -472,7 +464,7 @@ choice_dict = {
         },
         "room": "bar"
     },
-    14: "Game over condition",
+    14: "GAME OVER",
     15: {
         "Win": {
             "Choice": "listen",
@@ -512,9 +504,9 @@ choice_dict = {
         },
         "room": "bar"
     },
-    17: "Game over condition",
-    18: "Game over condition",
-    19: "Game over condition",
+    17: "GAME OVER",
+    18: "GAME OVER",
+    19: "GAME OVER",
     20: {
         "Win": {
             "Choice": "challenge",
@@ -537,7 +529,7 @@ choice_dict = {
                 3: "else to do."
             },
             "Score": -100,
-            "narrative": 22
+            "narrative": 28
         },
         "room": "pool table"
     },
@@ -575,7 +567,6 @@ choice_dict = {
                 0: "You approach Sean and tell him the",
                 1: "table is yours. He assures you that",
                 2: "won't be the case for long."
-                
             },
             "Score": 0,
             "narrative": 5
@@ -595,27 +586,251 @@ choice_dict = {
     },
     23: {
         "Win": {
-            "Choice":,
-            "Win":,
+            "Choice": "lie",
+            "Win": True,
             "Flavour": {
-                
+                0: "You deny the whole thing, and swear",
+                1: "the girl was crying about something else."
             },
-            "Score": ,
-            "narrative":
+            "Score": 200,
+            "narrative": 24
         },
         "Lose": {
-            "Choice":,
-            "Win":,
+            "Choice": "confess",
+            "Win": True,
             "Flavour": {
-                
+                0: "You confess it was you who made her cry. After",
+                1: "all, it's the right thing to do."
             },
-            "Score": ,
-            "narrative":
+            "Score": -250,
+            "narrative": 27
         },
-        "room":
-    },      
+        "room": "birthday party"
+    },
+    24: {
+            "Win": {
+                "Choice": "not",
+                "Win": True,
+                "Flavour": {
+                    0: "You stay quiet as the birthday girl returns",
+                    1: "from the bar. She's happy to meet you!"
+                },
+                "Score": 100,
+                "narrative": 25
+            },
+            "Lose": {
+                "Choice": "wish",
+                "Win": False,
+                "Flavour": {
+                    0: "You wish the woman closest to you a happy",
+                    1: "birthday. She bursts into tears. It's not",
+                    2: "her 30th birthday, it's her mother's fake",
+                    3: "30th birthday!"
+                },
+                "Score": -100,
+                "narrative": 26
+            },
+            "room": "birthday PARTY"
+        },
+    25: "GAME OVER",
+    26: "GAME OVER",
+    27: "GAME OVER",
+    28: {
+            "Win": {
+                "Choice": "tomas",
+                "Win": True,
+                "Flavour": {
+                    0: "You leave the children behind and",
+                    1: "leave for the bar to chat to Tomas."
+                },
+                "Score": 250,
+                "narrative": 13
+            },
+            "Lose": {
+                "Choice": "rat",
+                "Win": False,
+                "Flavour": {
+                    0: "You decide to rat them out to the",
+                    1: "bar maid. She is a classmate of theirs",
+                    2: "and doesn't appreciate it. She give you",
+                    3: "a dirty look and short changes you."
+                },
+                "Score": -100,
+                "narrative": 4
+            },
+            "room": "bar"
+        },
+    29: "Placeholder for extra question",
+    30: {
+            "Win": {
+                "Choice": "go foxes",
+                "Win": True,
+                "Flavour": {
+                    0: "Sean cheers along with you.",
+                    1: "You can't be sure, but it seems the",
+                    2: "Foxes are playing better than before."
+                },
+                "Score": 250,
+                "narrative": 31
+            },
+            "Lose": {
+                "Choice": "go stags",
+                "Win": False,
+                "Flavour": {
+                    0: "Sean's face sours.",
+                    1: "Oops, wrong team!"
+                },
+                "Score": -100,
+                "narrative": 36
+            },
+            "room": "telly"
+        },
+    31: {
+            "Win": {
+                "Choice": "place",
+                "Win": True,
+                "Flavour": {
+                    0: "The bet pays off! Sean is happy",
+                    1: "and buys you a drink."
+                },
+                "Score": 250,
+                "narrative": 32
+            },
+            "Lose": {
+                "Choice": "not",
+                "Win": False,
+                "Flavour": {
+                    0: "Sean is disappointed you don't",
+                    1: "believe in the team.",
+                    2: "You head to the bar to escape his",
+                    3: "scorn, and run into Tomas."
+                },
+                "Score": -100,
+                "narrative": 13
+            },
+            "room": "telly"
+        },
+    32: {
+            "Win": {
+                "Choice": "lie",
+                "Win": True,
+                "Flavour": {
+                    0: "You say you haven't seen him.",
+                    1: "She looks skeptical, but leaves you alone."
+                },
+                "Score": 100,
+                "narrative": 33
+            },
+            "Lose": {
+                "Choice": "truth",
+                "Win": False,
+                "Flavour": {
+                    0: "Sean's wife is furious. He said he",
+                    1: "was only stepping out for milk!"
+                },
+                "Score": -250,
+                "narrative": 35
+            },
+            "room": "telly"
+        },
+    33: {
+        "Win": {
+            "Choice": "stand awkwardly",
+            "Win": True,
+            "Flavour": {
+                0: "You are careful not to knock anything over",
+                1: "as you stand poker-straight in the corner.",
+                2: "Besides, there are probably spiders on the floor.",
+                3: "Sean cracks open a bottle of whiskey."
+            },
+            "Score": 100,
+            "narrative": 34
+        },
+        "Lose": {
+            "Choice": "get comfortable",
+            "Win": False,
+            "Flavour": {
+                0: "You slump down against a musty wall.",
+                1: "In the dark, you feel something bump",
+                2: "your head. Something falls from the shelf",
+                3: "behind you and smashes on the floor."
+            },
+            "Score": -300,
+            "narrative": 41
+        },
+        "room": "stock room"
+    },
+    34: "GAME OVER",
+    35: "GAME OVER",
+    36: {
+        "Win": {
+            "Choice": "stout",
+            "Win": True,
+            "Flavour": {
+                0: "You hand Sean the stout.",
+                1: "He sips it, and thanks you",
+                2: "with a frothy moustache on",
+                3: "his lip."
+            },
+            "Score": 200,
+            "narrative": 32
+        },
+        "Lose": {
+            "Choice": "ale",
+            "Win": False,
+            "Flavour": {
+                0: "Sean wrinkles his nose at",
+                1: "the ale. 'I wouldn't drink",
+                2: "that!'",
+                3: "Sean's having a terrible time.",
+                4: "Maybe you should do something",
+                5: "else."
+            },
+            "Score": -200,
+            "narrative": 37
+        },
+        "room": "telly"
+    },
+    37: {
+        "Win": {
+            "Choice": "20th",
+            "Win": True,
+            "Flavour": {
+                0: "It's actually her 30th, but",
+                1: "she's really flattered!"
+            },
+            "Score": 300,
+            "narrative": 38
+        },
+        "Lose": {
+            "Choice": "30th",
+            "Win": False,
+            "Flavour": {
+                0: "It's actually her 20th! She's",
+                1: "really upset, and starts to sob",
+                2: "loudly."
+            },
+            "Score": -200,
+            "narrative": 40
+        }
+    },
+    38: {
+        "Win": {
+            "Choice": "not",
+            "Win": True,
+            "Flavour": {
+                0: "You continue the conversation",
+                1: "without sexually harassing anyone."
+            },
+            "Score": 100,
+            "narrative": 39
+        }
+    },
+    39: "GAME OVER",
+    40: "GAME OVER",
+    41: "GAME OVER",
+    42: "GAME OVER"
 }
-
 
 # Narrative dictionary
 narrative_dict = {
@@ -626,8 +841,8 @@ narrative_dict = {
              3: "You could go to the fruit machine to [Gamble]",
              4: "or try your luck at the [Pool table].",
              5: "The owner [Sean] is watching a game in the corner.",
-             6: "[Tomas] is waving at you from the bar, over the ",
-             7: "sound of a group of women at a [Birthday party].",
+             6: "Tomas is waving at you from the bar, over the ",
+             7: "sound of a group of women at a Birthday party.",
         },
         1: {
             0: "In the corner, a fruit machine plays a tune",
@@ -769,9 +984,112 @@ narrative_dict = {
             1: "you can join them. They look at each other and ask",
             2: "'We heard crying, did you make someone cry earlier?'",
             3: "Do you [Confess] or do you [Lie]?"
+        },
+        24: {
+            0: "The women allow you to sit with them. You notice the",
+            1: "30th Birthday banner. You look around for the birthday",
+            2: "girl. Do you [Wish] her happy birthday or [Not]?"
+        },
+        25: {
+            0: "You spend the evening in the company of these wonderful",
+            1: "women. Before you know it, it's closing time.",
+            2: "You stroll home into the night, with the women's numbers",
+            3: "in your pocket, and the promise to keep in touch with your",
+            4: "new BFFs."
+        },
+        26: {
+            0: "The women ask you to leave their table.",
+            1: "Burning with embarassment from making two separate women",
+            2: "cry, you decide to call it a night and head home."
+        },
+        27: {
+            0: "The women look at you in disgust. They don't want to talk to",
+            1: "you any more. You want to preserve the feeling of being a",
+            2: "winner, so you decide to take your licks and head out early",
+            3: "into the night."
+        },
+        28: {
+            0: "That really hurt, and you wonder if you should [Rat] them out",
+            1: "to the bar maid. On the other hand, you could go talk to",
+            2: "[Tomas] who is waving at you from the bar."
+        },
+        29: {
+            
+        },
+        30: {
+            0: "You head to watch the game with Sean. He gestures for you",
+            1: "to sit at his table. You want to cheer someone on, but who?",
+            2: "       [Go Foxes!]              [Go Stags!]               "
+            },
+        31: {
+            0: "The Foxes are on fire this evening. Sean thinks it's a sure",
+            1: "win. 'I'm going to place a bet, what do you say?'",
+            2: "Will you [Place] a bet or [Not]?"
+        },
+        32: {
+            0: "Sean's wife walks in. She looks around for him. Sean bolts",
+            1: "to the back of the pub. She corners you and asks if you've",
+            2: "seen him. Should you [Lie] or tell her the [Truth]?"
+        },
+        33: {
+            0: "You follow Sean to the stock room, laughing. You decide to",
+            1: "camp out in here for the time being. It's dusty, and the",
+            2: "walls are lined with fine spirits.",
+            3: "Should you [Get Comfortable] or [Stand Awkwardly]?"
+        },
+        34: {
+            0: "You and Sean happily sup fine spirits by the neck in the",
+            1: "stock room. The hours pass quickly, and it's finally",
+            2: "closing time. You creep out of the stock room when everyone",
+            3: "else is gone home, happy with your successful night."
+        },
+        35: {
+            0: "Sean's wife marches past you and pulls him out by the ear.",
+            1: "On the way out the door, he shouts that you are barred from",
+            2: "his pub. You head home early, you can beg for his forgiveness",
+            3: "another day."
+        },
+        36: {
+            0: "Embarassed by your mistake, you rush to the bar to buy",
+            1: "Sean a drink. You go to order, but wait... does Sean",
+            2: "drink [Stout] or [Ale]?"
+        },
+        37: {
+            0: "You bring the ale over to the birthday party. They are",
+            1: "happy to accept any drink, and offer you a seat at their",
+            2: "table.",
+            3: "You notice the 'Happy Birthday' banner strung over",
+            4: "the table. You turn to the woman wearing the sash.",
+            5: "Do you wish her a happy [20th] birthday or a happy [30th]",
+            6: "birthday?"
+        },
+        38: {
+            0: "The birthday girl is flattered! You two really hit it",
+            1: "off. You feel a spark. Do you lean in to [Kiss] her or",
+            2: "[Not]?"
+        },
+        39: {
+            0: "You continue to chat late into the night. All too soon,",
+            1: "it's closing time. You head home with a new friend and a",
+            2: "new contact in your phone book."
+        },
+        40: {
+            0: "That's the final straw. Sean's had more than enough",
+            1: "of you for one night. He takes one look at the weeping woman",
+            2: "and shows you the door."
+        },
+        41: {
+            0: "The smell of fine whiskey fills the air.",
+            1: "Sean is furious -- you've broken an €800 bottle",
+            2: "of whiskey!",
+            3: "He throws you out of the pub, and you go home early."
+        },
+        42: {
+            0: "You lean in for the kiss, and are met with a hard slap.",
+            1: "Sean hears the commotion, and is more than sick of you at",
+            2: "this point. He throws you out of his pub."
         }
-        
-}
+    }
 
 
 
