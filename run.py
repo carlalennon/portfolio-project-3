@@ -182,7 +182,6 @@ def flavour_print_lose():
 
 
 def player_input_branch_definition():
-    print("player_input_branch_definition")
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     for value in narrative_dict[Player.stage].values():
         print(value)
@@ -194,19 +193,31 @@ def player_input_branch_definition():
         print("Please enter a valid action. 1\n")
         action = input("> ")
     if action.lower() == "gamble":
-        define_branch()
+        define_branch_fruit()
     elif action.lower() == "pool table":
-        Player.stage == 20
+        define_branch_pool()
     elif action.lower() == "sean":
-        Player.stage == 30
+        define_branch_sean()
     else:
         print("Please enter a valid option 2")
         action = input("> .. ")
 
 
-def define_branch():
+def define_branch_fruit():
     Player.room = "fruit machine"
     Player.stage = 1
+    game_loop()
+    
+    
+def define_branch_pool():
+    Player.room = "pool table"
+    Player.stage = 20
+    game_loop()
+
+
+def define_branch_sean():
+    Player.room = "telly"
+    Player.stage = 30
     game_loop()
 
 
