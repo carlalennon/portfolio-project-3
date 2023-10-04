@@ -148,17 +148,26 @@ def narrative():
         print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
 
 
+def game_over_check():
+    for value in narrative_dict[Player.stage].values():
+        print(value)
+    return
+
+
 def player_answer():
-    print("\n Enter your choice below:")
-    choice = input("> ")
-    win = choice_dict[Player.stage]["Win"]["Choice"]
-    lose = choice_dict[Player.stage]["Lose"]["Choice"]
-    if choice.lower() not in [win, lose]:
-        print("Please enter a valid choice 4")
-    if choice.lower() == win:
-        flavour_print_win()
-    elif choice.lower() == lose:
-        flavour_print_lose()
+    if choice_dict[Player.stage] != "GAME OVER":
+        print("\n Enter your choice below:")
+        choice = input("> ")
+        win = choice_dict[Player.stage]["Win"]["Choice"]
+        lose = choice_dict[Player.stage]["Lose"]["Choice"]
+        if choice.lower() not in [win, lose]:
+            print("Please enter a valid choice")
+        if choice.lower() == win:
+            flavour_print_win()
+        elif choice.lower() == lose:
+            flavour_print_lose()
+    else:
+        game_over_print()
 
 
 def flavour_print_win():
