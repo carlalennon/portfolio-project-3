@@ -1030,7 +1030,7 @@ narrative_dict = {
         30: {
             0: "You head to watch the game with Sean. He gestures for you",
             1: "to sit at his table. You want to cheer someone on, but who?",
-            2: "       [Go Foxes!]              [Go Stags!]               "
+            2: "       [Go Foxes]              [Go Stags!]               "
             },
         31: {
             0: "The Foxes are on fire this evening. Sean thinks it's a sure",
