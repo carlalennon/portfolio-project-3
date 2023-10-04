@@ -1,6 +1,8 @@
 
 # Closing Time : A Pub RPG
 
+![The menu of Closing time](./images/rm-menu.png)
+
 ## Description
 
 "Closing Time" is a basic text-based RPG about spending the night in a pub. You must avoid social errors, boring conversation, and aggressive patrons to survive as long into the night as you can. 
@@ -12,6 +14,10 @@ I chose an old fashioned RPG because I am interested in old tech. I grew up in t
 The goal of the project is to entertain the player, as they navigate through a night in a small local pub.
 
 ## Project Features
+
+![The user interface](./images/rm-ui.png)
+
+![Taking the user name input](./images/rm-name.png)
 
 Closing Time is simple, but has a few features:
 - An in game clock that prints the time as the player makes decisions throughout the night.
@@ -39,6 +45,8 @@ There is a character guide in the "About" section of the menu.
 
 To restart the game, click the "Run Program" button at the top of the web page.
 
+![How to restart the game](./images/rm-restart.png)
+
 ## Credits
 
 I did relatively little research for this game, compared to my last project. Python logic came together easily after building the first function from the linked tutorial below. 
@@ -61,6 +69,10 @@ I used the Programiz compiler to test my game as I went. This allowed me to have
 
 Despite my testing, there are many errors still in this game.
 
+My code goes through the VSCode Python linter with no issues
+
+![Linter pass: yay!](./images/rm-linter.png)
+
 ## Known Issues
 
 - There are only 3 choices in the first message, when there were originally intended to be 5.
@@ -79,3 +91,9 @@ Despite my testing, there are many errors still in this game.
 - Add negative scoring to the game
 - Fix all instances of the room printer
 - Add an option to play again upon game completion
+
+## Final Thoughts
+
+I enjoyed learning Python. I regret not having time to fully implement my vision, due to overtime at work this month. I may continue with this project.
+
+Python is integral to my career path as an animator. I contacted several technical animators, animation software developers and pipeline specialists over the last month. They all said that Python was essential, as a lot of automation in animation is opening folders, putting all the images into video format, and moving those files into a cloud based production software. 
