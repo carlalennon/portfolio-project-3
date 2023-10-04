@@ -228,8 +228,8 @@ def define_branch_fruit():
     Player.room = "fruit machine"
     Player.stage = 1
     game_loop()
-    
-    
+
+
 def define_branch_pool():
     Player.room = "pool table"
     Player.stage = 20
@@ -1046,7 +1046,6 @@ narrative_dict = {
             2: "[Tomas] who is waving at you from the bar."
         },
         29: {
-            
         },
         30: {
             0: "You head to watch the game with Sean. He gestures for you",
@@ -1122,7 +1121,6 @@ narrative_dict = {
             2: "this point. He throws you out of his pub."
         }
     }
-
 
 
 # Game calls
