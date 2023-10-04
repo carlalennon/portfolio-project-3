@@ -107,10 +107,16 @@ def room():
     """
     Prints the room the player is in (Indicates branch)
     """
-    player_room = choice_dict[Player.stage]["room"]
-    print("--Current room: ------------")
-    print("\n" + player_room.upper())
-    print("----------------------------")
+    try:
+        player_room = choice_dict[Player.stage]["room"]
+        print("--Current room: ------------")
+        print("\n" + player_room.upper())
+        print("----------------------------")
+    except roomError:
+        print("roomError")
+
+
+roomError = 1
 
 
 def time_increment():
