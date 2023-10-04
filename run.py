@@ -94,6 +94,7 @@ def set_player_ui():
 
 def game_loop():
     room()
+    game_over()
     time_increment()
     time()
     score_add()
@@ -107,12 +108,12 @@ def room():
     """
     Prints the room the player is in (Indicates branch)
     """
-    try:
-        player_room = choice_dict[Player.stage]["room"]
+    player_room = choice_dict[Player.stage]["room"]
+    if Player.room:
         print("--Current room: ------------")
         print("\n" + player_room.upper())
         print("----------------------------")
-    except roomError:
+    else:
         print("roomError")
 
 
@@ -147,6 +148,8 @@ def time():
 def score_add():
     if Player.stage in choice_dict:
         Player.score += choice_dict[Player.stage]["Win"]["Score"]
+    else:
+        return
 
 
 def score():
@@ -163,12 +166,6 @@ def narrative():
         print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
 
 
-def game_over_check():
-    for value in narrative_dict[Player.stage].values():
-        print(value)
-    return
-
-
 def player_answer():
     if choice_dict[Player.stage] != "GAME OVER":
         print("\n Enter your choice below:")
@@ -181,6 +178,14 @@ def player_answer():
             flavour_print_win()
         elif choice.lower() == lose:
             flavour_print_lose()
+    else:
+        game_over()
+
+
+def game_over():
+    if choice_dict[Player.stage] == "GAME OVER":
+        for value in narrative_dict[Player.stage].values():
+            print(value)
 
 
 def flavour_print_win():
@@ -190,7 +195,8 @@ def flavour_print_win():
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     narrative = choice_dict[Player.stage]["Win"]["narrative"]
     Player.stage = narrative
-    game_loop()
+    if not game_over():
+        game_loop()
 
 
 def flavour_print_lose():
@@ -200,7 +206,8 @@ def flavour_print_lose():
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     narrative = choice_dict[Player.stage]["Lose"]["narrative"]
     Player.stage = narrative
-    game_loop()
+    if not game_over():
+        game_loop()
 
 
 def player_input_branch_definition():
