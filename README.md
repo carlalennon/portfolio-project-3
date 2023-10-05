@@ -79,7 +79,6 @@ My code goes through the VSCode Python linter with no issues
 - If the player takes certain routes, the clock will run out of numbers to print, and print "TimeError" instead.
 - The player only has 2 chances to get the spelling of their answer correct, or else the game will break. I tried to solve this with a while loop, but this printed hundred of "Please enter your answer"s to the terminal. 
 - The room printer will break on several scenarios, due to the room not being entered into the dictionary.
-- The game over text will not print to the terminal upon a good OR bad ending. I think this is because the game loop is being called, and functions are trying to reference empty dictionary entries.
 - The score function always adds a positive, even if the player loses.
 
 ## Future Improvements
@@ -87,7 +86,6 @@ My code goes through the VSCode Python linter with no issues
 - Add the last two branchs into the game
 - Add more times to the clock OR limit the length of certain players paths to be less than the time limit
 - Implement a system wherein the player can type their answer incorrectly as many times as they like without breaking the game
-- Fix the game over print
 - Add negative scoring to the game
 - Fix all instances of the room printer
 - Add an option to play again upon game completion
