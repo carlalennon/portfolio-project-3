@@ -95,7 +95,7 @@ def set_player_ui():
 
 
 def game_over():
-    while choice_dict[Player.stage] == "GAME OVER":
+    if choice_dict[Player.stage] == "GAME OVER":
         Player.gameover = True
         game_over_message()
     else:
@@ -104,14 +104,13 @@ def game_over():
 
 
 def game_loop():
-    room() # Prints room plater is in
-    time_increment() # Adds 1hour to each turn        
-    time() # Prints time
-    score_add() # Adds score
-    score() # Prints score
-    narrative() # Prints narrative values
+    room()  # Prints room plater is in
+    time_increment()  # Adds 1hour to each turn
+    time()  # Prints time
+    score_add()  # Adds score
+    score()  # Prints score
+    narrative()  # Prints narrative values
     player_answer()
-
 
 
 # Player information
