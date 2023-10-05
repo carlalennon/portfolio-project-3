@@ -97,24 +97,21 @@ def set_player_ui():
 def game_over():
     while choice_dict[Player.stage] == "GAME OVER":
         Player.gameover = True
+        game_over_message()
     else:
         Player.gameover = False
+        game_loop()
 
 
 def game_loop():
-    game_over()
-    print(str(Player.gameover))
-    while Player.gameover is False:
-        room()
-        time_increment()
-        time()
-        score_add()
-        score()
-        narrative()
-        player_answer()
-    else:
-        game_over_message()
-        return
+    room() # Prints room plater is in
+    time_increment() # Adds 1hour to each turn        
+    time() # Prints time
+    score_add() # Adds score
+    score() # Prints score
+    narrative() # Prints narrative values
+    player_answer()
+
 
 
 # Player information
@@ -197,6 +194,8 @@ def game_over_message():
     for value in narrative_dict[Player.stage].values():
         print(value)
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
+    return
+
 
 def flavour_print_win():
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
@@ -205,7 +204,7 @@ def flavour_print_win():
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     narrative = choice_dict[Player.stage]["Win"]["narrative"]
     Player.stage = narrative
-    game_loop()
+    game_over()
 
 
 def flavour_print_lose():
@@ -215,7 +214,7 @@ def flavour_print_lose():
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     narrative = choice_dict[Player.stage]["Lose"]["narrative"]
     Player.stage = narrative
-    game_loop()
+    game_over()
 
 
 def player_input_branch_definition():
@@ -379,10 +378,7 @@ choice_dict = {
         },
         "room": "pool table"
     },
-    6: {
-        0: "GAME OVER",
-        "room": "outside"
-    },
+    6: "GAME OVER",
     7: {
         "Win": {
             "Choice": "challenge",
@@ -407,10 +403,7 @@ choice_dict = {
         },
         "room": "pool table"
     },
-    8: {
-        0: "GAME OVER",
-        "room": "outside"
-    },
+    8: "GAME OVER",
     9: {
         "Win": {
             "Choice": "birthday party",
