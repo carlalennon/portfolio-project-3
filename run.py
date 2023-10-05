@@ -9,6 +9,7 @@ class Player:
         self.score = ''
         self.stage = 0
         self.branch = ''
+        self.gameover = ''
 
 
 you = Player()
@@ -63,6 +64,7 @@ def start_game():
     Player.room = "porch"  # sets player room
     Player.score = 0
     Player.stage = 0
+    Player.gameover = False
     get_name()
 
 
@@ -92,14 +94,27 @@ def set_player_ui():
     Player.room = "  "
 
 
+def game_over():
+    while choice_dict[Player.stage] == "GAME OVER":
+        Player.gameover = True
+    else:
+        Player.gameover = False
+
+
 def game_loop():
-    room()
-    time_increment()
-    time()
-    score_add()
-    score()
-    narrative()
-    player_answer()
+    game_over()
+    print(str(Player.gameover))
+    while Player.gameover is False:
+        room()
+        time_increment()
+        time()
+        score_add()
+        score()
+        narrative()
+        player_answer()
+    else:
+        game_over_message()
+        return
 
 
 # Player information
@@ -114,9 +129,6 @@ def room():
         print("----------------------------")
     else:
         print("roomError")
-
-
-roomError = 1
 
 
 def time_increment():
@@ -177,15 +189,14 @@ def player_answer():
             flavour_print_win()
         elif choice.lower() == lose:
             flavour_print_lose()
-    else:
-        game_over()
+    return
 
 
-def game_over():
-    if choice_dict[Player.stage] == "GAME OVER":
-        for value in narrative_dict[Player.stage].values():
-            print(value)
-
+def game_over_message():
+    print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
+    for value in narrative_dict[Player.stage].values():
+        print(value)
+    print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
 
 def flavour_print_win():
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
@@ -194,8 +205,7 @@ def flavour_print_win():
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     narrative = choice_dict[Player.stage]["Win"]["narrative"]
     Player.stage = narrative
-    if not game_over():
-        game_loop()
+    game_loop()
 
 
 def flavour_print_lose():
@@ -205,8 +215,7 @@ def flavour_print_lose():
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     narrative = choice_dict[Player.stage]["Lose"]["narrative"]
     Player.stage = narrative
-    if not game_over():
-        game_loop()
+    game_loop()
 
 
 def player_input_branch_definition():
