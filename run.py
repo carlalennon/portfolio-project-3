@@ -94,7 +94,6 @@ def set_player_ui():
 
 def game_loop():
     room()
-    game_over()
     time_increment()
     time()
     score_add()
