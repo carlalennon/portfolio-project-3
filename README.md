@@ -117,6 +117,10 @@ Here's the criteria where the project failed, and what I did to fix them.
         <img src="images/readme-failing-criteria-2.png" alt="	Functions are missing explanatory comments">
     </details>
 
+    Easliy remidied by adding comments to functions.
+
+    <img src="images/readme-failing-criteria-comments.png" alt="Some comments in functions from run.py">
+
 ## Known Issues
 
 - There are only 3 choices in the first message, when there were originally intended to be 5.
