@@ -140,11 +140,10 @@ Here's the criteria where the project failed, and what I did to fix them.
     - The room printer will break on several scenarios, due to the room not being entered into the dictionary.
     -   I will fix this by adding all rooms in dictionary 
 
- 
+
 ## Known Issues
 
 - There are only 3 choices in the first message, when there were originally intended to be 5.
-- The room printer will break on several scenarios, due to the room not being entered into the dictionary.
 - The score function always adds a positive, even if the player loses.
 
 ## Future Improvements

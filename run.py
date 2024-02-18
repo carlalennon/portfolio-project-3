@@ -172,10 +172,20 @@ def time():
         print("TimeError")
 
 
-def score_add():
-    """Adds score to player."""
+"""def score_add():
+    ""Adds score to player.""
     if Player.stage in choice_dict:
         Player.score += choice_dict[Player.stage]["Win"]["Score"]
+    else:
+        return"""
+    
+def score_add():
+    """Adds score to player or subtracts score if player loses."""
+    if Player.stage in choice_dict:
+        if player_answer() == choice_dict[Player.stage]["Win"]["Choice"]:
+            Player.score += choice_dict[Player.stage]["Win"]["Score"]
+        elif player_answer() == choice_dict[Player.stage]["Lose"]["Choice"]:
+            Player.score -= choice_dict[Player.stage]["Lose"]["Score"]
     else:
         return
 
