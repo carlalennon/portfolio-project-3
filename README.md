@@ -73,11 +73,54 @@ My code goes through the VSCode Python linter with no issues
 
 ![Linter pass: yay!](./images/rm-linter.png)
 
+## Failing Criteria
+
+Here's the criteria where the project failed, and what I did to fix them.
+
+1. The project does not handle incorrect inputs correctly
+   <details>
+    <summary>2.1 Fail in Assessment</summary>
+        <img src="images/readme-failing-criteria-1.png" alt="	The application rigorously checks user input only for the initial question. For subsequent questions, it fails to handle empty or invalid inputs, leading to the application crashing. This needs addressing to ensure consistent user experience throughout."/>
+    </details>
+       <details>
+    <summary>3.2 Fail in Assessment</summary>
+        <img src="images/readme-failing-criteria-2.png" alt="	The application rigorously checks user input only for the initial question. For subsequent questions, it fails to handle empty or invalid inputs, leading to the application freezing/pausing and not going forward. This needs addressing to ensure consistent user experience throughout."/>
+    </details>
+        <summary>2.1 and 3.1 Fail in Assessment</summary>
+        <img src="images/readme-failing-criteria-3.png" alt="	The application rigorously checks user input only for the initial question. For subsequent questions, it fails to handle empty or invalid inputs, leading to the application freezing/pausing and not going forward. This needs addressing to ensure consistent user experience throughout."/>
+    </details>
+    
+    I solved this by accident. When opening the file, I noticed the dictionarys made the file very long and hard to work with. After working through PP4, I was more comfortable with Python. I decided to move the dictionarys to their own files. 
+
+
+    <img src="images/readme-new-files.png" alt="The new files in the project">
+
+    I set up two calls in the main file, one calls the choice dictionary and one calls the narrative dictionary 
+
+    <img src="images/readme-new-files-calls.png" alt="The calls for the dictionarys">
+
+    I then placed the dictionarys in the files, and wrapped them in a function that declares them. The run file calls these functions, and the dictionarys are delivered inside them to the game 
+
+    <img src="images/readme-new-files-narrative.png" alt="The function in the narrative dictionary">
+    <img src="images/readme-new-files-choice.png" alt="The function in the choice dictionary">
+
+    I then deployed the project to Heroku to check that these dictionarys are being called correctly. Then, after breaking my project into a smaller size, I got started trying to replicate the first error it failed on. But......
+
+    <img src="images/readme-failing-criteria-error-replication.png" alt="A string of increect inputs handled correctly">
+
+    I can no longer replicate this error! I believe what happened is that when an incorrect answer is entered, the function for a dictionary entry is called again. Before, an incorrect answer would point to an empty space in a dictionary, causing the error. This is how I solved the incorrect answer handling by accident.
+
+2. Functions are missing explanatory comments
+
+    <details>
+    <summary>1.1 Fail in Assessment</summary>
+        <img src="images/readme-failing-criteria-2.png" alt="	Functions are missing explanatory comments">
+    </details>
+
 ## Known Issues
 
 - There are only 3 choices in the first message, when there were originally intended to be 5.
 - If the player takes certain routes, the clock will run out of numbers to print, and print "TimeError" instead.
-- The player only has 2 chances to get the spelling of their answer correct, or else the game will break. I tried to solve this with a while loop, but this printed hundred of "Please enter your answer"s to the terminal. 
 - The room printer will break on several scenarios, due to the room not being entered into the dictionary.
 - The score function always adds a positive, even if the player loses.
 

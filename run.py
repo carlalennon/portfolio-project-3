@@ -21,6 +21,7 @@ you = Player()
 
 
 def title_screen():
+    """Prints the title screen and options to the player."""
     print("################")
     print("# Closing Time #")
     print("################")
@@ -31,6 +32,7 @@ def title_screen():
 
 # Title screen
 def title_screen_selections():
+    """Allows user to select play, about or quit."""
     option = input("> \n")
     if option.lower() == "play":
         start_game()
@@ -46,6 +48,7 @@ def title_screen_selections():
 
 
 def about_game():
+    """Prints information about the game."""
     print("Made in 2023")
     print("Characters:")
     print("Sean : The owner of the pub and")
@@ -66,6 +69,7 @@ def about_game():
 
 # Logic
 def start_game():
+    """Starts the game"""
     Player.room = "porch"  # sets player room
     Player.score = 0
     Player.stage = 0
@@ -74,6 +78,7 @@ def start_game():
 
 
 def get_name():
+    """Gets the players name and sets the UI."""
     question_name = "What is your name?\n"
     print(question_name)
     player_name = input("> \n")
@@ -83,6 +88,7 @@ def get_name():
 
 
 def rules():
+    """Prints the rules of the game."""
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     print("\n Weclome, " + Player.name + ".")
     print("Try not to get thrown out of the pub")
@@ -95,11 +101,13 @@ def rules():
 
 
 def set_player_ui():
+    """Sets the players UI to default values."""
     Player.time = 0
     Player.room = "  "
 
 
 def game_over():
+    """Ends the game and prints the game over message."""
     if choice_dict[Player.stage] == "GAME OVER":
         Player.gameover = True
         game_over_message()
@@ -109,7 +117,8 @@ def game_over():
 
 
 def game_loop():
-    room()  # Prints room plater is in
+    """Main game loop. Calls all functions to run the game."""
+    room()  # Prints room player is in
     time_increment()  # Adds 1hour to each turn
     time()  # Prints time
     score_add()  # Adds score
@@ -133,10 +142,12 @@ def room():
 
 
 def time_increment():
+    """Increments time by 1 hour."""
     Player.time = Player.time + 1
 
 
 def time():
+    """Prints the time."""
     if Player.time == 0:
         print("20:00")
     elif Player.time == 1:
@@ -158,6 +169,7 @@ def time():
 
 
 def score_add():
+    """Adds score to player."""
     if Player.stage in choice_dict:
         Player.score += choice_dict[Player.stage]["Win"]["Score"]
     else:
@@ -165,10 +177,12 @@ def score_add():
 
 
 def score():
+    """Prints the players score."""
     print("Score: " + str(Player.score))
 
 
 def narrative():
+    """Prints the narrative to the player."""
     if Player.stage == 0:
         player_input_branch_definition()
     else:
@@ -179,6 +193,7 @@ def narrative():
 
 
 def player_answer():
+    """Gets the players choice and calls the win or lose functions."""
     if choice_dict[Player.stage] != "GAME OVER":
         print("\n Enter your choice below:")
         choice = input("> \n")
@@ -194,6 +209,7 @@ def player_answer():
 
 
 def game_over_message():
+    """Prints the game over message."""
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     for value in narrative_dict[Player.stage].values():
         print(value)
@@ -202,6 +218,7 @@ def game_over_message():
 
 
 def flavour_print_win():
+    """Prints the win flavour text and sets the narrative."""
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     for value in choice_dict[Player.stage]["Win"]["Flavour"].values():
         print(value)
@@ -212,6 +229,7 @@ def flavour_print_win():
 
 
 def flavour_print_lose():
+    """Prints the lose flavour text and sets the narrative."""
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     for value in choice_dict[Player.stage]["Lose"]["Flavour"].values():
         print(value)
@@ -222,6 +240,7 @@ def flavour_print_lose():
 
 
 def player_input_branch_definition():
+    """Decides the branch the player will take."""
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
     for value in narrative_dict[Player.stage].values():
         print(value)
@@ -243,18 +262,21 @@ def player_input_branch_definition():
 
 
 def define_branch_fruit():
+    """Sets the branch to fruit machine."""
     Player.room = "fruit machine"
     Player.stage = 1
     game_loop()
 
 
 def define_branch_pool():
+    """Sets the branch to pool table."""
     Player.room = "pool table"
     Player.stage = 20
     game_loop()
 
 
 def define_branch_sean():
+    """Sets the branch to sean."""
     Player.room = "telly"
     Player.stage = 30
     game_loop()
