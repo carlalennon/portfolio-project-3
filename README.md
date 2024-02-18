@@ -135,6 +135,12 @@ Here's the criteria where the project failed, and what I did to fix them.
     -   I will fix this by adding more times to the clock
     -  <img src="images/readme-failing-criteria-extra-time.png" alt="Player clock with added times for 4am and 5am">
     -  The player can now drink in the pub until the sun comes up without running out of time. If the player take a paticularly long path there will still be enough time.
+<br>
+        For known issue
+    - The room printer will break on several scenarios, due to the room not being entered into the dictionary.
+    -   I will fix this by adding all rooms in dictionary 
+
+ 
 ## Known Issues
 
 - There are only 3 choices in the first message, when there were originally intended to be 5.
