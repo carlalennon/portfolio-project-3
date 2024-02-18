@@ -164,6 +164,10 @@ def time():
         print("02:00")
     elif Player.time == 7:
         print("03:00")
+    elif Player.time == 8:
+        print("04:00")
+    elif Player.time == 9:
+        print("05:00")
     else:
         print("TimeError")
 
