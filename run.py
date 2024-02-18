@@ -182,10 +182,15 @@ def time():
 def score_add():
     """Adds score to player or subtracts score if player loses."""
     if Player.stage in choice_dict:
-        if player_answer() == choice_dict[Player.stage]["Win"]["Choice"]:
+        choice = player_answer()
+        win = choice_dict[Player.stage]["Win"]["Choice"]
+        lose = choice_dict[Player.stage]["Lose"]["Choice"]
+        if choice == win:
             Player.score += choice_dict[Player.stage]["Win"]["Score"]
-        elif player_answer() == choice_dict[Player.stage]["Lose"]["Choice"]:
+            flavour_print_win()  # Print the narrative after a correct answer
+        elif choice == lose:
             Player.score -= choice_dict[Player.stage]["Lose"]["Score"]
+            flavour_print_lose()  # Print the narrative after an incorrect answer
     else:
         return
 
@@ -206,8 +211,8 @@ def narrative():
         print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
 
 
-def player_answer():
-    """Gets the players choice and calls the win or lose functions."""
+"""def player_answer():
+    ""Gets the players choice and calls the win or lose functions.""
     if choice_dict[Player.stage] != "GAME OVER":
         print("\n Enter your choice below:")
         choice = input("> \n")
@@ -220,7 +225,25 @@ def player_answer():
         elif choice.lower() == lose:
             flavour_print_lose()
     return
+"""
 
+def player_answer():
+    """Gets the players choice and calls the win or lose functions."""
+    if choice_dict[Player.stage] != "GAME OVER":
+        print("\n Enter your choice below:")
+        while True:  # Keep asking until a valid answer is given
+            choice = input("> \n").lower()
+            win = choice_dict[Player.stage]["Win"]["Choice"]
+            lose = choice_dict[Player.stage]["Lose"]["Choice"]
+            if choice == win:
+                flavour_print_win()
+                return choice  # Return the choice
+            elif choice == lose:
+                flavour_print_lose()
+                return choice  # Return the choice
+            else:
+                print("Please enter a valid choice")
+    return
 
 def game_over_message():
     """Prints the game over message."""
