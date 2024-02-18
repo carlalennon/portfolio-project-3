@@ -121,10 +121,23 @@ Here's the criteria where the project failed, and what I did to fix them.
 
     <img src="images/readme-failing-criteria-comments.png" alt="Some comments in functions from run.py">
 
+3.  Lack of documentation of errors
+4.  
+    <details>
+    <summary>5.1 Fail in Assessment</summary>
+        <img src="images/readme-failing-criteria-5.png" alt="The README file contains a note about the use of the PEP8 linter and input validations, but results are only mentioned. Consider documenting the PEP8 results, test input validations, unexpected user behavior and edge cases.">
+    </details>
+
+    This is tricky to fix, as memories of errors fixed in October are long gone. However, I will address some known issues and document that process here, and also the major error solve above has been documented in detail. 
+
+    For known issue
+    - If the player takes certain routes, the clock will run out of numbers to print, and print "TimeError" instead.
+    -   I will fix this by adding more times to the clock
+    -  <img src="images/readme-failing-criteria-extra-time.png" alt="Player clock with added times for 4am and 5am">
+    -  The player can now drink in the pub until the sun comes up without running out of time. If the player take a paticularly long path there will still be enough time.
 ## Known Issues
 
 - There are only 3 choices in the first message, when there were originally intended to be 5.
-- If the player takes certain routes, the clock will run out of numbers to print, and print "TimeError" instead.
 - The room printer will break on several scenarios, due to the room not being entered into the dictionary.
 - The score function always adds a positive, even if the player loses.
 
