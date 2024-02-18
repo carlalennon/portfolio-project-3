@@ -1,7 +1,9 @@
 # Get narrative from run.py
 from narrative import get_narrative_dict
+from choice import choice_dict
 
 narrative_dict = get_narrative_dict()
+choice_dict = get_choice_dict()
 
 # Player setup to hold status effects and name
 class Player:
@@ -256,10 +258,6 @@ def define_branch_sean():
     Player.room = "telly"
     Player.stage = 30
     game_loop()
-
-
-choice_dict = {
-    
 
 
 
