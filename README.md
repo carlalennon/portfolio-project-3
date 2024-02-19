@@ -235,6 +235,7 @@ The deployment procedure is as follows:
 
 - There are only 3 choices in the first message, when there were originally intended to be 5.
 - Score does not print to player
+- The game over message prints incorrectly, with the keys included instead of just the values
 
 ## Future Improvements
 

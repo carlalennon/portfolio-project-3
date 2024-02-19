@@ -211,22 +211,6 @@ def narrative():
     print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
 
 
-"""def player_answer():
-    ""Gets the players choice and calls the win or lose functions.""
-    if choice_dict[Player.stage] != "GAME OVER":
-        print("\n Enter your choice below:")
-        choice = input("> \n")
-        win = choice_dict[Player.stage]["Win"]["Choice"]
-        lose = choice_dict[Player.stage]["Lose"]["Choice"]
-        if choice.lower() not in [win, lose]:
-            print("Please enter a valid choice")
-        if choice.lower() == win:
-            flavour_print_win()
-        elif choice.lower() == lose:
-            flavour_print_lose()
-    return
-"""
-
 def player_answer():
     """Gets the players choice and calls the win or lose functions."""
     if choice_dict[Player.stage] != "GAME OVER":
