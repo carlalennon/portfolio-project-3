@@ -598,7 +598,8 @@ def get_choice_dict():
                 },
                 "Score": -200,
                 "narrative": 40
-            }
+            },
+            "room" : "telly"
         },
         38: {
             "Win": {
