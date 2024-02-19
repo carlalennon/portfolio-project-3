@@ -148,7 +148,13 @@ Here's the criteria where the project failed, and what I did to fix them.
 
     <img src="images/readme-error-02-game-over-crash.png" alt="The game over crash">
 
-    I will solve this by having the game check if the narrative entry is equal to game over. If it is, it will print the final narrative and GAME OVER, and then break.
+    This is being caused by this function
+
+    <img src="images/readme-error-02-game-over-loop.png" alt="The game over function loop">
+
+    I chenged this function so that the appriate piece of narrative is printed, and then GAME OVER is printed. This then sends the player back to the title screen. The game over = True flag is removed because it wasn't being used
+    
+    <img src="images/readme-error-02-game-over-loop-fixed.png" alt="The game over function loop fixed ">
 
 
 ## Known Issues
