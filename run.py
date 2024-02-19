@@ -118,12 +118,13 @@ def game_over():
 
 def game_loop():
     """Main game loop. Calls all functions to run the game."""
+    print(f"Current stage: {Player.stage}")
     room()  # Prints room player is in
     time_increment()  # Adds 1hour to each turn
     time()  # Prints time
+    narrative()  # Prints narrative values
     score_add()  # Adds score
     score()  # Prints score
-    narrative()  # Prints narrative values
     player_answer()
 
 
@@ -200,15 +201,23 @@ def score():
     print("Score: " + str(Player.score))
 
 
-def narrative():
-    """Prints the narrative to the player."""
+"""def narrative():
+    ""Prints the narrative to the player.""
     if Player.stage == 0:
         player_input_branch_definition()
     else:
         print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
         for value in narrative_dict[Player.stage].values():
             print(value)
-        print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
+        print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")"""
+        
+        
+def narrative():
+    """Prints the narrative to the player."""
+    print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
+    for value in narrative_dict[Player.stage].values():
+        print(value)
+    print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
 
 
 """def player_answer():
