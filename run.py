@@ -119,7 +119,6 @@ def set_player_ui():
 def game_over():
     """Ends the game and prints the game over message."""
     if choice_dict[Player.stage] == "GAME OVER":
-        Player.gameover = True
         print(narrative_dict[Player.stage]) 
         print("GAME OVER")
         title_screen()
@@ -129,8 +128,6 @@ def game_over():
 
 
 def game_loop():
-    """Main game loop. Calls all functions to run the game."""
-    print(f"Current stage: {Player.stage}")
     room()  # Prints room player is in
     time_increment()  # Adds 1hour to each turn
     time()  # Prints time
@@ -184,13 +181,6 @@ def time():
     else:
         print("TimeError")
 
-
-"""def score_add():
-    ""Adds score to player.""
-    if Player.stage in choice_dict:
-        Player.score += choice_dict[Player.stage]["Win"]["Score"]
-    else:
-        return"""
     
 def score_add():
     """Adds score to player or subtracts score if player loses."""
@@ -211,17 +201,6 @@ def score_add():
 def score():
     """Prints the players score."""
     print("Score: " + str(Player.score))
-
-
-"""def narrative():
-    ""Prints the narrative to the player.""
-    if Player.stage == 0:
-        player_input_branch_definition()
-    else:
-        print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")
-        for value in narrative_dict[Player.stage].values():
-            print(value)
-        print("~~*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*~~")"""
         
         
 def narrative():

@@ -128,8 +128,7 @@ Here's the criteria where the project failed, and what I did to fix them.
 
     <img src="images/readme-failing-criteria-comments.png" alt="Some comments in functions from run.py">
 
-3.  Lack of documentation of errors
-4.  
+3.  Lack of documentation of errors  
     <details>
     <summary>5.1 Fail in Assessment</summary>
         <img src="images/readme-failing-criteria-5.png" alt="The README file contains a note about the use of the PEP8 linter and input validations, but results are only mentioned. Consider documenting the PEP8 results, test input validations, unexpected user behavior and edge cases.">
@@ -164,6 +163,58 @@ Here's the criteria where the project failed, and what I did to fix them.
     <img src="images/readme-error-02-game-over-loop-fixed.png" alt="The game over function loop fixed ">
 
 
+4. Testing not documented
+
+    <details>
+    <summary>5.2 Fail in Assessment</summary>
+        <img src="images/readme-failing-criteria-6.png" alt="The README file contains a note about the use of the PEP8 linter and input validations, but results are only mentioned. Consider documenting the PEP8 results, test input validations, unexpected user behavior and edge cases.">
+    </details>
+
+    Solved by adding a testing section to readme
+
+5. No deployment procedure in readme 
+
+    <details>
+    <summary>9.1 Fail in Assessment</summary>
+        <img src="images/readme-failing-criteria-7.png" alt="	Deployment procedure is missing in the documentation">
+    </details>
+
+    Solved by adding a deployment section to readme
+
+
+
+## Testing 
+
+Here's a table of testing with actions and results: 
+
+| Test              | Pass Criteria                                 | Action                                                          | Result                                                        | P/F  |
+|-------------------|-----------------------------------------------|-----------------------------------------------------------------|---------------------------------------------------------------|------|
+| Game Menu         | User can access game menu                     | Run the program                                                 | The menu displays                                             | Pass |
+| About Button      | User can access information about the game    | Navigate to the about menu and back                             | The user can get to the about menu and back                   | Pass |
+| Play Button       | User can start the game                       | Use the menu to start a game                                    | The user can start a game                                     | Pass |
+| Set user name     | User can set a name variable which is stored  | Set a name in the game                                          | User can set their name                                       | Pass |
+| Branch definition | User can input a choice to set a story branch | Test 3 branches available in game                               | All branches work                                             | Pass |
+| User input        | User can input their choice                   | Input a bracketed choice into the game                          | Game accepts only the available choices                       | Pass |
+| User error        | User can misspell thir choice                 | Input a wrong choice, then a correct one                        | Game will resume upon correct spelling of the brackets choice | Pass |
+| Game Over         | Game over is printed upon game end            | Get to the end of the game and check for game over              | Game over is printed at end of game                           | Pass |
+| Restart Game      | Player can play again after a game            | Navigate to the end of the game and check the menu is displayed | Menu is displayed upon the end of a game                      | Pass |
+
+I used this [python linter](https://infoheap.com/python-lint-online/) to lint my python
+
+The results for the three python files are below:
+    - <details>
+    <summary>Linter result: run.py</summary>
+        <img src="images/readme-lint-run.png" alt="No errors in run.py">
+    </details>
+        - <details>
+    <summary>Linter result: narrative.py</summary>
+        <img src="images/readme-lint-narrative.png" alt="No errors in narrative.py">
+    </details>
+        - <details>
+    <summary>Linter result: choice.py</summary>
+        <img src="images/readme-lint-choice.png" alt="No errors in choice.py">
+    </details>
+
 ## Known Issues
 
 - There are only 3 choices in the first message, when there were originally intended to be 5.
@@ -173,6 +224,7 @@ Here's the criteria where the project failed, and what I did to fix them.
 
 - Add the last two branchs into the game
 - Implement a system wherein the player can type their answer incorrectly as many times as they like without breaking the game
+- Add the player score to the UI so players can see it increase and decreasr as they make choices
 
 ## Final Thoughts
 
