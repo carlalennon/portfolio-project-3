@@ -106,11 +106,22 @@ def set_player_ui():
     Player.room = "  "
 
 
+"""def game_over():
+    ""Ends the game and prints the game over message.""
+    if choice_dict[Player.stage] == "GAME OVER":
+        Player.gameover = True
+        game_over_message()
+    else:
+        Player.gameover = False
+        game_loop()"""
+        
+
 def game_over():
     """Ends the game and prints the game over message."""
     if choice_dict[Player.stage] == "GAME OVER":
         Player.gameover = True
-        game_over_message()
+        print(narrative_dict[Player.stage]) 
+        print("GAME OVER")
     else:
         Player.gameover = False
         game_loop()
