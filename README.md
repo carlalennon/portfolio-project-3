@@ -215,6 +215,22 @@ The results for the three python files are below:
         <img src="images/readme-lint-choice.png" alt="No errors in choice.py">
     </details>
 
+
+## Deployment 
+
+The deployment procedure is as follows: 
+
+- Create a Heroku account 
+- Create a new Heroku app
+- Give the app a name - mine is portfolio-project-carla-lennon
+- Select EU as the region
+- Add the Python buildpack
+- Add the node.js buildpack
+- Select Github repository where the project is stored to deploy from 
+- Push up to date project to Github for deployment
+- Complete manual depolyment
+- Open deployed app and test that it's working 
+
 ## Known Issues
 
 - There are only 3 choices in the first message, when there were originally intended to be 5.
