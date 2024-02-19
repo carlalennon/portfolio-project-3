@@ -139,6 +139,10 @@ Here's the criteria where the project failed, and what I did to fix them.
         For known issue
     - The room printer will break on several scenarios, due to the room not being entered into the dictionary.
     -   I will fix this by adding all rooms in dictionary 
+    - <details>
+    <summary>Error from broken room key</summary>
+        <img src="images/readme-error-01-room-crash.png" alt="The error that shows when there's no room key in a dictionary">
+    </details>
 
 
 ## Known Issues

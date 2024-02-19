@@ -611,7 +611,8 @@ def get_choice_dict():
                 },
                 "Score": 100,
                 "narrative": 39
-            }
+            },
+            "room" : "birthday party"
         },
         39: "GAME OVER",
         40: "GAME OVER",
