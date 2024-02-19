@@ -90,7 +90,7 @@ Here's the criteria where the project failed, and what I did to fix them.
         <img src="images/readme-failing-criteria-3.png" alt="	The application rigorously checks user input only for the initial question. For subsequent questions, it fails to handle empty or invalid inputs, leading to the application freezing/pausing and not going forward. This needs addressing to ensure consistent user experience throughout."/>
     </details>
     
-    I solved this by accident. When opening the file, I noticed the dictionarys made the file very long and hard to work with. After working through PP4, I was more comfortable with Python. I decided to move the dictionarys to their own files. 
+    When opening the file, I noticed the dictionarys made the file very long and hard to work with. After working through PP4, I was more comfortable with Python. I decided to move the dictionarys to their own files. 
 
 
     <img src="images/readme-new-files.png" alt="The new files in the project">
@@ -104,11 +104,18 @@ Here's the criteria where the project failed, and what I did to fix them.
     <img src="images/readme-new-files-narrative.png" alt="The function in the narrative dictionary">
     <img src="images/readme-new-files-choice.png" alt="The function in the choice dictionary">
 
-    I then deployed the project to Heroku to check that these dictionarys are being called correctly. Then, after breaking my project into a smaller size, I got started trying to replicate the first error it failed on. But......
+    I then deployed the project to Heroku to check that these dictionarys are being called correctly. 
+
+    The old input function was not handling inputs correctly. The player only had one chance to get the answer wrong before the game would crash.
+   <img src="images/readme-failing-criteria-input-function.png" alt="The function that handles player input">
+
+   This was solved by adding a while loop. the loop checks the player input against the win and lose conditions for that stage. If it matches, it prints the appropiate text and the game moves on. If not, it prompts the player to re enter their prompt.
+   <img src="images/readme-failing-criteria-solve.png" alt="The function that handles player input correctly">
+
+    This results in the player being able to enter inputs incorrectly without the game crashing 
 
     <img src="images/readme-failing-criteria-error-replication.png" alt="A string of increect inputs handled correctly">
 
-    I can no longer replicate this error! I believe what happened is that when an incorrect answer is entered, the function for a dictionary entry is called again. Before, an incorrect answer would point to an empty space in a dictionary, causing the error. This is how I solved the incorrect answer handling by accident.
 
 2. Functions are missing explanatory comments
 
@@ -160,16 +167,12 @@ Here's the criteria where the project failed, and what I did to fix them.
 ## Known Issues
 
 - There are only 3 choices in the first message, when there were originally intended to be 5.
-- The score function always adds a positive, even if the player loses.
+- Score does not print to player
 
 ## Future Improvements
 
 - Add the last two branchs into the game
-- Add more times to the clock OR limit the length of certain players paths to be less than the time limit
 - Implement a system wherein the player can type their answer incorrectly as many times as they like without breaking the game
-- Add negative scoring to the game
-- Fix all instances of the room printer
-- Add an option to play again upon game completion
 
 ## Final Thoughts
 
