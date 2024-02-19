@@ -144,6 +144,12 @@ Here's the criteria where the project failed, and what I did to fix them.
         <img src="images/readme-error-01-room-crash.png" alt="The error that shows when there's no room key in a dictionary">
     </details>
 
+    When the game is over, the game simply crashes instead of printing a game over. This is because the game is stuck in a loop calling game over and game loop functions.
+
+    <img src="images/readme-error-02-game-over-crash.png" alt="The game over crash">
+
+    I will solve this by having the game check if the narrative entry is equal to game over. If it is, it will print the final narrative and GAME OVER, and then break.
+
 
 ## Known Issues
 
