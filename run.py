@@ -122,6 +122,7 @@ def game_over():
         Player.gameover = True
         print(narrative_dict[Player.stage]) 
         print("GAME OVER")
+        title_screen()
     else:
         Player.gameover = False
         game_loop()
